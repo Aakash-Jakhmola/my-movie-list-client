@@ -1,0 +1,82 @@
+@import '../../utils/variables.scss';
+
+.home {
+  .intro {
+    background-color: $bgblue;
+    min-height: 100vh;
+    color: white;
+    display: block;
+  }
+  .intro-nav {
+    font-family: monospace, monospace;
+    padding: 1.5rem 1.5rem;
+    font-size: 1.1rem;
+    a {
+      margin:0 2rem;
+      text-decoration: inherit;
+      color: inherit;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .intro-nav-logo {
+      float: left;
+    }
+    .intro-nav-links {
+      float: right;
+    }
+    .signin-btn{
+      font-size: 15px;
+      border: 1px solid white;
+      border-radius: 20px;
+      padding: 8px 15px;
+      color: white;
+      outline: none;
+      background:none;
+    }
+    .signin-btn:hover {
+      background-color: white;
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  .intro-body{
+    margin-top: 6rem;
+    padding: 0 5rem;
+    display: flex;
+    .intro-left {
+      width: 60%;
+      .intro-left-content {
+        width: 80%;
+        margin: 0 auto;
+        text-align: left;
+        font-size: 1.3rem;
+        p{
+          margin-bottom: 1rem;
+        }
+      }
+    }
+    button {
+      font-family: monospace, monospace;
+      font-size: 15px;
+      color:white;
+      background: $btnyellow;
+      border: 1px solid $btnyellow;
+      margin: 1rem 2rem 0 0;  
+      border-radius: 20px;
+      padding: 8px 15px;
+      letter-spacing: 0.3mm;
+      cursor: pointer;
+      outline: none;
+    }
+    button:hover {
+      background-color: $btnyellowhover;
+      border-color: $btnyellowhover;
+    }
+    .intro-right {
+      width: 40%;
+    }
+  }
+
+}

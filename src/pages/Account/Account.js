@@ -1,0 +1,130 @@
+import React,{useEffect,useState} from 'react'
+import axios from 'axios'
+import { useHistory, useLocation } from 'react-router'
+import { useParams} from 'react-router-dom'
+import { Container, Row,Col } from 'reactstrap'
+
+import NavBar from '../../Components/Navbar/Navbar'
+import PageLoader from '../../Components/PageLoader/PageLoader'
+import MovieCardContainer from './MovieCardContainer'
+import Followers from './Followers';
+import Following from './Following';
+import './Account.scss'
+import { API_URL } from '../../utils/Constants'
+
+export default function Account(props) {
+  
+  const { username, page } = useParams();
+  const history = useHistory();
+  const location = useLocation();
+  
+  console.log(username, page);
+
+  const inituser = {
+    username : username,
+    firstname : "",
+    lastname : "",
+    movies_count : 0,
+    followers_count: 0,
+    following_count:0
+  }
+
+ // const [movieList, setMovieList] = React.useState([]);
+  const [user, setUser] = useState(inituser)
+  const [loading, setLoading] = useState(true)
+  const [style, setStyle] = useState({})
+  const [currentPage, setCurrentPage] = useState(page)
+
+  useEffect(()=>{
+    if(!loading)
+      setStyle({})
+    else {
+      setStyle({
+        filter:'blur(6px) grayscale(10%)',
+        overflow:'hidden',
+      })
+    }
+  },[loading])
+
+  useEffect(async() => {
+    setLoading(true)
+		axios.get(`${API_URL}/users/${username}`)
+    .then((res) => {
+			setUser(res.data);
+      console.log(res.data)
+      setLoading(false)
+    })
+    .catch((err)=>{
+      console.log(err)
+      setLoading(false);
+    })
+  }, [])
+
+  const pavitraPathName = (pathName) => {
+    let newPathName = '/';
+    for(let i = 1; i < pathName.length ; ++i) {
+      if(pathName[i] === '/') 
+        break;
+      newPathName += pathName[i] ;
+    }
+    return newPathName;
+  }
+
+  const changeUrl = (p) =>{
+    //page = p;
+    let newPath = pavitraPathName(location.pathname) + '/';
+    if(p)
+     newPath += p;
+    history.replace({ pathname: newPath });
+    setCurrentPage(p)
+  }
+
+  return (
+    <>
+    {loading && <PageLoader/>}
+    <NavBar/>
+    <div className='account' style={style} >
+      <Container fluid>
+        <Row >
+          <Col className='text-md-left'> <h1 style={{fontSize:"200%"}}>{user.firstname + " " + user.lastname} </h1></Col>
+        </Row>
+        <Row >
+          <Col className='text-md-left'><h5 style={{fontSize:"100%"}}>@{user.username}</h5></Col>
+        </Row>
+        {/* <hr style={{height:'5px', margin:'0'}}/> */}
+        <Row>
+          <Col md='4' className='info' onClick={()=>{changeUrl('')}} style={{borderBottom:currentPage==''?'2px solid #F9B82A':''}}>
+            <i class="fas fa-film" style={{color:"rgb(50,120,250)", backgroundColor:'#D6E7FF'}} ></i>
+            <div className='info-text'>
+                <span>{user.movies_count}</span>
+                <span>Movies</span>
+            </div>
+          </Col>
+          <Col md='4' className='info' onClick={()=>changeUrl('followers')} style={{borderBottom:currentPage=='followers'?'2px solid #F9B82A':''}}>
+            <i class="fas fa-users"  style={{color:"rgb(87,191,99)", backgroundColor:'#DAF9D4'}}></i>
+            <div className='info-text'>
+                <span>{user.followers_count}</span>
+                <span>Followers</span>
+            </div>
+          </Col>
+          <Col md='4' className='info' onClick={()=>changeUrl('following')} style={{borderBottom:currentPage=='following'?'2px solid #F9B82A':''}}>
+            <i class="fas fa-user-friends" style={{color:"rgb(133,118,195)", backgroundColor:'#E4DFF1'}}></i>
+            <div className='info-text'>
+                <span>{user.following_count}</span> 
+                <span> Following</span>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+
+      <div className='account-info-wrapper'>
+        { page === undefined && <MovieCardContainer username={username} setLoading={setLoading} /> }
+        { page === 'followers' && <Followers /> }
+        { page === 'following' && <Following /> }
+      </div>
+      
+    </div>
+
+    </>
+  )
+}

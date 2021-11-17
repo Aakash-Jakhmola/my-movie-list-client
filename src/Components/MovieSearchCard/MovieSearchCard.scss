@@ -1,0 +1,102 @@
+@import '../../utils/variables.scss';
+
+.movie-search-card {
+  color: transparent;
+  height: 17rem;
+  margin: 0.5rem 0.4rem;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  position: relative;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.9px;
+  transition: all .3s ease-in-out; 
+  cursor: pointer;
+  .poster {
+    height: 100%;
+    float: left;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+    border-radius: 10px;
+    border-radius: 5px;
+  }
+
+  .info {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    padding: 1rem 0.6rem;
+    display: none;
+    font-size: 0.7em;
+    .title {
+      font-size: 1.4em;
+      font-weight: 600;
+    }
+    .overview {
+      margin-top: 1rem;
+      font-weight: 600;
+      height: 36%;
+      overflow: hidden;
+    }
+    .genre {
+      border: 1px solid white;
+      margin-right: 0.3rem;
+      padding: 0 0.3rem;
+      border-radius: 10px;
+    }
+    .actions {
+      position: absolute;
+      display: flex;
+      justify-content: space-around;
+      bottom: 0;
+      left: 0;
+      margin: 1rem 0;
+      width: 100%;
+      // span {
+      //   text-align: center;
+      //   display: block;
+      //   margin: 0;
+      // }
+      // font-size: 2.1em;
+      div {
+        width: 50%;
+        text-align: center;
+        margin: 0;
+        padding: 0.5rem;
+      }
+      div:hover {
+        background-color: rgba($color: white, $alpha: .2);
+      }
+      i {
+        height: 2rem;
+        margin: 0;
+        transition: all .1s ease-in-out; 
+      }
+      .fa-check-circle {
+        color: rgb(27, 146, 27);
+      }
+      .fa-clock {
+        color: rgb(148, 177, 255);
+        // float:  right;
+      }
+    }
+  }
+
+}
+
+.movie-search-card:hover {
+  transform: scale(1.2); 
+  z-index: 99999;
+  color: white;
+  .info{
+    background-color: rgba($color:$bgblue, $alpha:0.8);
+    transition: background 0.3s ease;
+    display: block;
+  }
+  
+}

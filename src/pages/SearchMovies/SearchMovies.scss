@@ -1,0 +1,17 @@
+@import '../../utils/variables.scss';
+
+.res {
+  color: white;
+  text-align: left;
+  font-size: large;
+  padding: 1rem 10rem;
+}
+.search-movie-page {
+  background-color: $bgblue;
+  padding: 2rem 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: relative;
+}

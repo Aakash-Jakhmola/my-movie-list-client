@@ -1,0 +1,18 @@
+.notif {
+  z-index: 99999;
+  padding: 0.6rem 1.5rem;
+  height: fit-content;
+  font-size: small;
+  width: 18rem;
+  border-radius: 10px;
+  color: white;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  .progress {
+    margin-top: 00.5rem;
+    height: 0.2rem;
+    width: 100%;
+    color: white;
+  }
+}

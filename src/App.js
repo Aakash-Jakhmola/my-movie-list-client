@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+import React, {useContext, useEffect, Suspense} from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
+import {Store, AuthContext} from "./state/Store";
+import { loadUser } from "./state/auth/authActions";
+import PageLoader from "./Components/PageLoader/PageLoader";
+import Home from './pages/Home/Home';
+import SignUp from "./pages/SignUp/SignUp";
+import Account from "./pages/Account/Account";
+import Logout from "./pages/Logout/Logout";
+import LoginModal from "./Components/LoginModal/LoginModal";
+import SearchMovies from "./pages/SearchMovies/SearchMovies";
+import MovieDetailsModal from "./Components/MovieDetailsModal/MovieDetailsModal";
 
 function App() {
+  const auth = useContext(AuthContext);
+  useEffect(()=>{
+    loadUser(auth.dispatch)
+  },[])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router>
+        <Switch>
+        <Route exact path="/" render={(routeProps)=><Home {...routeProps}/>}/>
+        <Route exact path="/signup" render={(routeProps)=><SignUp {...routeProps}/>}/>
+        <Route exact path="/login" render={(routeProps)=><LoginModal {...routeProps}/>}/>
+        <Route exact path="/logout" render={(routeProps)=><Logout {...routeProps}/>}/>
+        <Route exact path="/search-movie/" component={SearchMovies}/>
+        {/* <Route exact path='/movies/:id' render={(routeProps)=><MovieDetailsModal {...routeProps}/>} /> */}
+        {/* <Route exact path="/search-movie/" render={(routeProps)=><SearchMovies {...routeProps}/>}/> */}
+        {/* <Route exact path="/:username/followers" render={(routeProps)=><Account {...routeProps}/>}/> */}
+        <Route exact path="/:username" render={(routeProps)=><Account {...routeProps}/>}/>
+        <Route exact path="/:username/:page" render={(routeProps)=><Account {...routeProps}/>}/>
+
+        <Route render={()=><h1>NOT FOUND</h1>}/>
+        </Switch>
+      </Router>
+    </React.Fragment>
+   
   );
 }
 
-export default App;
+export default function AppWithStore() {
+  return (
+    <Store>
+      <App/>
+    </Store>
+  )
+}
+
