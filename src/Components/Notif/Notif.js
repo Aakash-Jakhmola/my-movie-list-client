@@ -5,10 +5,8 @@ function Notif(props) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    console.log('run')
     setTimeout(() => {
       setVisible(false);
-      console.log('expired')
     }, 500000);
   }, []);
   return visible? (

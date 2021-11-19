@@ -12,7 +12,6 @@ function RatingModal({setRatingModalOpen,rating,setRating,review,setReview,submi
 
   const ratingChanged = (newRating) => {
     newRating*=2
-    console.log(newRating);
     setRating(newRating)
   };  
 

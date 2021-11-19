@@ -12,21 +12,11 @@ function LoginModal(props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  useEffect(()=>{
-    console.log('context from loginmodal',auth)
-  },[auth])
-
-  useEffect(()=>{
-    console.log(props)
-  },[])
-
   const loginSubmit = () => {
     console.log(username,password)
     let userCred = {username:username,password:password}
     loginUser(auth.dispatch,userCred)
   }
-
-  // console.log(props)
 
   if(auth.state.userLoggedIn)
   return <Redirect

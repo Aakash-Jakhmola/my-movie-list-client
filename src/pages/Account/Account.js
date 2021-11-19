@@ -17,8 +17,6 @@ export default function Account(props) {
   const { username, page } = useParams();
   const history = useHistory();
   const location = useLocation();
-  
-  console.log(username, page);
 
   const inituser = {
     username : username,
@@ -93,7 +91,7 @@ export default function Account(props) {
         </Row>
         {/* <hr style={{height:'5px', margin:'0'}}/> */}
         <Row>
-          <Col md='4' className='info' onClick={()=>{changeUrl('')}} style={{borderBottom:currentPage==''?'2px solid #F9B82A':''}}>
+          <Col md='4' className='info' onClick={()=>{changeUrl('')}} style={{borderBottom:!currentPage?'2px solid #F9B82A':''}}>
             <i class="fas fa-film" style={{color:"rgb(50,120,250)", backgroundColor:'#D6E7FF'}} ></i>
             <div className='info-text'>
                 <span>{user.movies_count}</span>

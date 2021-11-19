@@ -28,7 +28,7 @@
     padding: 0rem 0;
     text-align: left;
     font-weight: 600;
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
   .review {
     margin-top: 0.5rem;
@@ -86,10 +86,62 @@
 
 }
 
-
 .movie-review-card:hover {
   transform: scale(1.02); 
   .update {
     display: block;
   }
 }
+
+@media screen and (max-width: 1280px) {
+ .movie-review-card{
+   width: 48%;
+ }
+}
+
+@media screen and (max-width: 600px) {
+
+ .movie-review-card{
+   width: 100%;
+ }
+}
+
+
+@media screen and (max-width: 400px) {
+ 
+ .movie-review-card{
+   width: 100%;
+   height: fit-content ;
+   height: 8rem;
+   margin-bottom: 1rem;
+   .title {
+    width: 100%;
+    padding: 0rem 0;
+    font-weight: 600;
+    font-size: 1em;
+  }
+  .review {
+    margin-top: 0.3rem;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: $txtwhite;
+  } 
+  i {
+    font-size: 0.7em;
+  }
+  
+ }
+ 
+}
+
+@media screen and (max-width: 330px) {
+ .movie-review-card{
+   width: 100%;
+   .stars{
+    padding: 0.1rem 0.2rem;
+    margin: 0.5rem;
+    border-radius: 20px;
+   }
+ }
+}
+

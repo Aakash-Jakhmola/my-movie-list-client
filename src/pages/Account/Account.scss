@@ -79,3 +79,15 @@
     letter-spacing: 0.1rem;
   }
 }
+
+@media screen and (max-width: 1450px) {
+ .account{
+   padding:2rem 6rem;
+ }
+}
+
+@media screen and (max-width: 770px) {
+  .account{
+    padding:2rem 2rem;
+  }
+ }

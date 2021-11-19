@@ -48,6 +48,7 @@ export const loginUser = (dispatch, credentials) => {
       dispatch(loginSuccess(res.data));
     })
     .catch((error)=>{
+      console.log(error,error.response.data)
       if(error.response && error.response.data) {
         dispatch(loginError(error.response.data.toLowerCase()))
       } else {
@@ -67,7 +68,6 @@ export const loadUser = (dispatch) =>{
   dispatch(loadUserRequest())
   axios.get(`${API_URL}/users/loadUser`,{withCredentials:true})
   .then((res)=>{
-    console.log('dekhle',res.data)
     if(res.data.error)
       dispatch(loadUserError());
     else dispatch(loadUserSuccess(res.data))

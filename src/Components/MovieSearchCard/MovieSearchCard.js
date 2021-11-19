@@ -64,9 +64,9 @@ export default function MovieSearchCard({ movie,
       setRatingError('give some rating')
       return 
     }
-    let data = {userid:auth.state.user_id, movieid:movie.id,rating:rating, review:review}
+    let data = {movie_id:movie.id,score:rating, review:review}
     //console.log(movie)
-    axios.post(`${API_URL}/users/addmovie`,data,{withCredentials:true})
+    axios.post(`${API_URL}/api/v2/add_movie`,data,{withCredentials:true})
     .then((res)=>{
       console.log(res)
       if(res.data.error) {

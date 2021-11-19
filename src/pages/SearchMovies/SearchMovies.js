@@ -30,7 +30,6 @@ export default function SearchMovies(props) {
   },[loading,ratingModalOpen])
   
   useEffect(()=>{
-    console.log('changed')
     setLoading(true)
     axios.get(`${API_URL}/movies/search/${query.q}`)
     .then((res)=>{

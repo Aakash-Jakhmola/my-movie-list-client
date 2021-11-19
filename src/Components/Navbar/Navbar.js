@@ -22,7 +22,6 @@ export default function NavBar() {
 
   const movieQueryHandler = (e) =>{
     if(e.key === 'Enter' && movieQuery.length > 0) {
-      console.log('enter pressed')
       history.push(`/search-movie?q=${movieQuery}`)
       window.location.reload()
     }

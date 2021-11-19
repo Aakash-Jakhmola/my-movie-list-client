@@ -12,10 +12,6 @@ function Home() {
   const [homeStyle, setHomeStyle] = useState({})
 
   useEffect(()=>{
-    console.log('context from home',auth)
-  },[auth])
-
-  useEffect(()=>{
     if(!loginOpen)
       setHomeStyle({})
     else {

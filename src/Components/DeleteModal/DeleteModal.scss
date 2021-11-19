@@ -1,0 +1,51 @@
+@import '../../utils/variables.scss';
+
+.delete-modal-overlay {
+  position: fixed; /* Positioning and size */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  // background-color: rgba(100,100,100,0.5);
+}
+
+.delete-modal {
+  box-shadow: 0 0 2rem black;
+  overflow: hidden;
+  background-color: $cardblue;
+  color: white;
+  padding: 1.3rem 1rem;
+  margin: 0 auto;
+  width: 30%;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-60%);
+
+  button {
+    margin:1rem 1rem 0rem 1rem;
+    border-radius: 5px;
+    padding: 0.5rem 1.4rem;
+    color: white;
+    outline: none;
+    border: none;
+    background-color: rgba(255,255,255,0.2);
+  }
+  button:hover {
+    background-color: white;
+    color: black;
+  }
+  .button-highlighted {
+    background-color: $btnyellowhover;
+  }
+  .button-highlighted:hover{
+    background-color:$btnyellow;
+    color: white;
+  }
+
+
+}
