@@ -48,9 +48,11 @@ export const loginUser = (dispatch, credentials) => {
       dispatch(loginSuccess(res.data));
     })
     .catch((error)=>{
-      console.log(error,error.response.data)
+      console.log(error.response,error.response.data)
       if(error.response && error.response.data) {
-        dispatch(loginError(error.response.data.toLowerCase()))
+        if(error.response.data instanceof String)
+          dispatch(loginError(error.response.data.toLowerCase()))
+        else dispatch(loginError('Some Error Occured'))
       } else {
         dispatch(loginError('something went wrong'))
       }

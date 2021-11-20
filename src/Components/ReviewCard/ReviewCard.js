@@ -137,10 +137,10 @@ function ReviewCard({movie,username}) {
         ratingError={ratingError}
         submitReview={updateReview}/>}
 
-        {deleteModalOpen && <DeleteModal 
-          message='Do you want to delete this movie?'
-          setDeleteModalOpen={setDeleteModalOpen} 
-          deleteMovie={deleteMovie}/>}
+      {deleteModalOpen && <DeleteModal 
+        message='Do you want to delete this movie?'
+        setDeleteModalOpen={setDeleteModalOpen} 
+        deleteMovie={deleteMovie}/>}
 
 		</>
   )		

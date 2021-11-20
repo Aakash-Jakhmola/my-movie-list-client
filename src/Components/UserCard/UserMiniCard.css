@@ -1,0 +1,16 @@
+.user-mini-card {
+  background-color: #273757;
+  padding: 0.6rem 1rem;
+  margin: 2rem;
+  height: 4.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 10px;
+}
+
+.user-mini-card .user-info {
+  width: 100%;
+  padding-left: 1rem;
+}
+/*# sourceMappingURL=UserMiniCard.css.map */

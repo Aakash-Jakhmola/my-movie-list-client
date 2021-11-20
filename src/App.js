@@ -4,6 +4,7 @@ import './App.css';
 import {Store, AuthContext} from "./state/Store";
 import { loadUser } from "./state/auth/authActions";
 import PageLoader from "./Components/PageLoader/PageLoader";
+import Feed from "./pages/Feed/Feed";
 import Home from './pages/Home/Home';
 import SignUp from "./pages/SignUp/SignUp";
 import Account from "./pages/Account/Account";
@@ -23,6 +24,7 @@ function App() {
       <Router>
         <Switch>
         <Route exact path="/" render={(routeProps)=><Home {...routeProps}/>}/>
+        <Route exact path="/feed" render={(routeProps)=><Feed {...routeProps}/>}/>
         <Route exact path="/signup" render={(routeProps)=><SignUp {...routeProps}/>}/>
         <Route exact path="/login" render={(routeProps)=><LoginModal {...routeProps}/>}/>
         <Route exact path="/logout" render={(routeProps)=><Logout {...routeProps}/>}/>

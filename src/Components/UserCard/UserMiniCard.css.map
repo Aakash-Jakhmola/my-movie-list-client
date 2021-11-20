@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,eAAe,CAAA;EACb,gBAAgB,ECDR,OAAO;EDEf,OAAO,EAAE,WAAW;EACpB,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,MAAM;EACd,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,IAAI;CAKpB;;AAXD,AAOE,eAPa,CAOb,UAAU,CAAA;EACR,KAAK,EAAE,IAAI;EACX,YAAY,EAAE,IAAI;CACnB",
+    "sources": [
+        "UserMiniCard.scss",
+        "../../utils/variables.scss"
+    ],
+    "names": [],
+    "file": "UserMiniCard.css"
+}

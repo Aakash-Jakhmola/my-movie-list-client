@@ -7,6 +7,7 @@ import { Container, Row,Col } from 'reactstrap'
 import NavBar from '../../Components/Navbar/Navbar'
 import PageLoader from '../../Components/PageLoader/PageLoader'
 import MovieCardContainer from './MovieCardContainer'
+import WatchListCardContainer from './WatchListCardContainer'
 import Followers from './Followers';
 import Following from './Following';
 import './Account.scss'
@@ -24,7 +25,8 @@ export default function Account(props) {
     lastname : "",
     movies_count : 0,
     followers_count: 0,
-    following_count:0
+    following_count:0,
+    watch_later_count:0,
   }
 
  // const [movieList, setMovieList] = React.useState([]);
@@ -91,22 +93,29 @@ export default function Account(props) {
         </Row>
         {/* <hr style={{height:'5px', margin:'0'}}/> */}
         <Row>
-          <Col md='4' className='info' onClick={()=>{changeUrl('')}} style={{borderBottom:!currentPage?'2px solid #F9B82A':''}}>
-            <i class="fas fa-film" style={{color:"rgb(50,120,250)", backgroundColor:'#D6E7FF'}} ></i>
+          <Col md='3' className='info' onClick={()=>{changeUrl('')}} style={{borderBottom:!currentPage?'2px solid #F9B82A':''}}>
+            <div className='icon'><i class="fas fa-film" style={{color:"rgb(50,120,250)", backgroundColor:'#D6E7FF'}} ></i></div>
             <div className='info-text'>
                 <span>{user.movies_count}</span>
                 <span>Movies</span>
             </div>
           </Col>
-          <Col md='4' className='info' onClick={()=>changeUrl('followers')} style={{borderBottom:currentPage=='followers'?'2px solid #F9B82A':''}}>
-            <i class="fas fa-users"  style={{color:"rgb(87,191,99)", backgroundColor:'#DAF9D4'}}></i>
+          <Col md='3' className='info' onClick={()=>{changeUrl('watchlist')}} style={{borderBottom:currentPage=='watchlist'?'2px solid #F9B82A':''}}>
+            <div  className='icon'><i class="far fa-clock" style={{color:"rgb(249,141,35)", backgroundColor:'rgb(252, 225, 199)'}} ></i></div>
+            <div className='info-text'>
+                <span>{user.watch_later_count}</span>
+                <span>Watchlist</span>
+            </div>
+          </Col>
+          <Col md='3' className='info' onClick={()=>changeUrl('followers')} style={{borderBottom:currentPage=='followers'?'2px solid #F9B82A':''}}>
+            <div  className='icon'><i class="fas fa-users"  style={{color:"rgb(87,191,99)", backgroundColor:'#DAF9D4'}}></i></div>
             <div className='info-text'>
                 <span>{user.followers_count}</span>
                 <span>Followers</span>
             </div>
           </Col>
-          <Col md='4' className='info' onClick={()=>changeUrl('following')} style={{borderBottom:currentPage=='following'?'2px solid #F9B82A':''}}>
-            <i class="fas fa-user-friends" style={{color:"rgb(133,118,195)", backgroundColor:'#E4DFF1'}}></i>
+          <Col md='3' className='info' onClick={()=>changeUrl('following')} style={{borderBottom:currentPage=='following'?'2px solid #F9B82A':''}}>
+            <div  className='icon'><i class="fas fa-user-friends" style={{color:"rgb(133,118,195)", backgroundColor:'#E4DFF1'}}></i></div>
             <div className='info-text'>
                 <span>{user.following_count}</span> 
                 <span> Following</span>
@@ -117,6 +126,7 @@ export default function Account(props) {
 
       <div className='account-info-wrapper'>
         { page === undefined && <MovieCardContainer username={username} setLoading={setLoading} /> }
+        { page === 'watchlist' && <WatchListCardContainer username={username} setLoading={setLoading}/>}
         { page === 'followers' && <Followers /> }
         { page === 'following' && <Following /> }
       </div>

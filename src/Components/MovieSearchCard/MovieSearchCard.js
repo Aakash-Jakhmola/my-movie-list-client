@@ -11,7 +11,7 @@ import { API_URL } from '../../utils/Constants'
 import Notif from '../Notif/Notif'
 
 export default function MovieSearchCard({ movie, 
-    ratingModalOpen, setRatingModalOpen
+    ratingModalOpen, setRatingModalOpen, fromAccount
   }) {
   
   const auth = useContext(AuthContext)
@@ -32,34 +32,70 @@ export default function MovieSearchCard({ movie,
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
-        duration: 3000,
+        duration: 2500,
         onScreen: true
       }
     });
   }
 
-  // const generateErrorNotif = ()=>{
-  //   store.addNotification({
-  //     title: "Error",
-  //     message: "dsfasdf",
-  //     type: "danger",
-  //     insert: "top",
-  //     container: "top-right",
-  //     animationIn: ["animate__animated", "animate__fadeIn"],
-  //     animationOut: ["animate__animated", "animate__fadeOut"],
-  //     dismiss: {
-  //       duration: 3000,
-  //       onScreen: true
-  //     }
-  //   });
-  // }
+  const generateWatchLaterSuccessNotif = ()=>{
+    store.addNotification({
+      title: "Success",
+      message: "Successfully Added to Watch Later List",
+      type: "success",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 2500,
+        onScreen: true
+      }
+    });
+  }
+
+  const generateWatchLaterErrorNotif = ()=>{
+    store.addNotification({
+      title: "Error",
+      message: "Cannot Add Movie",
+      type: "danger",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 2500,
+        onScreen: true
+      }
+    });
+  }
 
   function addToWatchedMovies() {
     setModalOpen(true)
   } 
 
+  function watchLaterMovie() {
+    
+    let data = {movie_id:movie.id,watch_later:true}
+    //console.log(movie)
+    axios.post(`${API_URL}/api/v2/add_movie`,data,{withCredentials:true})
+    .then((res)=>{
+      console.log(res)
+      if(res.data.error) {
+       generateWatchLaterErrorNotif()
+      }
+      else {
+        generateWatchLaterSuccessNotif();
+      }
+    })
+    .catch((err)=>{
+      console.log(err.response)
+      generateWatchLaterErrorNotif()
+    })
+  }
+
+
   function submitReview() {
-    console.log('submitting', rating, review)
     if(!rating) {
       setRatingError('give some rating')
       return 
@@ -103,11 +139,11 @@ export default function MovieSearchCard({ movie,
       <div className='info'>
         <div className='title'>{movie.title}</div>
         <div>{movie.release_date && movie.release_date.substring(0,4)} . {movie.language}</div>
-        <div>{movie.genres && movie.genres.map((movie)=>(<span className='genre'>{movie} </span>))}</div>
+        <div>{movie.genres && movie.genres.map((g)=>(<span className='genre'>{g} </span>))}</div>
         <div className='overview'>{movie.overview}</div>
-        <div className='actions'>
+        <div className='actions' style={{display:fromAccount?'none':'flex'}}>
           <div onClick={addToWatchedMovies}><i className="fas fa-check-circle fa-2x"/><span> </span></div>
-          <div><i className="fas fa-clock fa-2x"/><span></span></div>
+          <div onClick={watchLaterMovie}><i className="fas fa-clock fa-2x"/><span></span></div>
         </div>
       </div>
     </div>

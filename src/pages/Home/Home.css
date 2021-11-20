@@ -1,0 +1,93 @@
+.home .intro {
+  background-color: #151f31;
+  min-height: 100vh;
+  color: white;
+  display: block;
+}
+
+.home .intro-nav {
+  font-family: monospace, monospace;
+  padding: 1.5rem 1.5rem;
+  font-size: 1.1rem;
+}
+
+.home .intro-nav a {
+  margin: 0 2rem;
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.home .intro-nav a:hover {
+  text-decoration: underline;
+}
+
+.home .intro-nav .intro-nav-logo {
+  float: left;
+}
+
+.home .intro-nav .intro-nav-links {
+  float: right;
+}
+
+.home .intro-nav .signin-btn {
+  font-size: 15px;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 8px 15px;
+  color: white;
+  outline: none;
+  background: none;
+}
+
+.home .intro-nav .signin-btn:hover {
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
+.home .intro-body {
+  margin-top: 6rem;
+  padding: 0 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.home .intro-body .intro-left {
+  width: 60%;
+}
+
+.home .intro-body .intro-left .intro-left-content {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1.3rem;
+}
+
+.home .intro-body .intro-left .intro-left-content p {
+  margin-bottom: 1rem;
+}
+
+.home .intro-body button {
+  font-family: monospace, monospace;
+  font-size: 15px;
+  color: white;
+  background: #F9B82A;
+  border: 1px solid #F9B82A;
+  margin: 1rem 2rem 0 0;
+  border-radius: 20px;
+  padding: 8px 15px;
+  letter-spacing: 0.3mm;
+  cursor: pointer;
+  outline: none;
+}
+
+.home .intro-body button:hover {
+  background-color: #dfa72e;
+  border-color: #dfa72e;
+}
+
+.home .intro-body .intro-right {
+  width: 40%;
+}
+/*# sourceMappingURL=Home.css.map */
