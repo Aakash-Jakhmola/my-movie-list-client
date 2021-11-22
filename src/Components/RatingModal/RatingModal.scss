@@ -14,7 +14,7 @@
   box-shadow: 0 0 2rem black;
   overflow: hidden;
   filter: blur(0px);
-  background-color: $cardblue;
+  background-color: $cardblue ;
   color: white;
   margin: 0 auto;
   width: 30%;
@@ -37,13 +37,13 @@
     font-size: small;
   }
   .form-control {
-    background-color: $bgblue;
+    background-color: $bgblue !important;
     color:white;
     font-size: 0.9em;
     font-weight: 200;
     margin-bottom: 1.5rem;
     border-radius: 10px;
-    width: 90%;
+    width: 90% !important;
     margin: 0 auto;
     border: none;
 
