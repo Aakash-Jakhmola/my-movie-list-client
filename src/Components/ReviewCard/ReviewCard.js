@@ -130,7 +130,7 @@ function ReviewCard({movie,username}) {
 			{updateModalOpen && <RatingModal 
         ratingModalOpen={updateModalOpen} 
         setRatingModalOpen={setUpdateModalOpen}
-        rating={rating}
+        rating={rating/2}
         setRating={setRating}
         review={review}
         setReview={setReview}
