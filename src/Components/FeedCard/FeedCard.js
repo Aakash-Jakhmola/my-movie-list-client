@@ -1,6 +1,7 @@
 import React from 'react'
 import './FeedCard.scss'
 
+
 import ProfilePic from '../../assets/profile_icon.png'
 
 export default function FeedCard(props) {
