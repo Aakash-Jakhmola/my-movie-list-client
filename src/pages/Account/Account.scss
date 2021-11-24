@@ -3,10 +3,25 @@
 .account {
   padding: 2rem 10rem;
   color: white;
-  .form-control {
-    background-color: $btnyellowhover;
+  .sort-by-box {
+    margin-left: 1rem;
+    background-color: #20577e;
+    color: white;;
+    border:none;
     width: fit-content;
+    border-radius: 2rem;
+    padding: 0.25rem 2rem;
+    text-transform: capitalize;
+
+    
+    
+    
   }
+
+  .sort-by-box:hover{
+    background-color:#326b94 !important;
+  }
+
   .movie-card-container {
     width: 100%;
     margin-top: 2rem;
@@ -14,6 +29,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
+    
   }
   .profile-wrapper {
     justify-content: space-evenly;    

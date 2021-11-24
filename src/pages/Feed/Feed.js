@@ -7,6 +7,7 @@ import {API_URL} from '../../utils/Constants'
 import NavBar from '../../Components/Navbar/Navbar'
 import {AuthContext} from '../../state/Store'
 import FeedCard from '../../Components/FeedCard/FeedCard'
+import { Link, NavLink } from 'react-router-dom'
 
 function Feed() {
   const auth = useContext(AuthContext)
@@ -71,20 +72,20 @@ function Feed() {
           </div>
 
           <div className='user-options'>
-            <div className='option'>
+            {/* <div className='option'>
               <i className="far fa-user"/> <span>Profile</span>
+            </div> */}
+            <div className='option'>
+              <NavLink to="/" className="link"><i className="fas fa-film"/> Movies</NavLink>
             </div>
             <div className='option'>
-              <i className="fas fa-film"/> Movies
+              <NavLink to = {`/${user.username}/watchlist`} className="link"><i className="far fa-clock"/> Watchlist</NavLink>
             </div>
             <div className='option'>
-              <i className="far fa-clock"/> Watchlist
+              <NavLink to = {`/${user.username}/followers`} className="link"><i className="fas fa-users"/> Followers</NavLink>
             </div>
             <div className='option'>
-              <i className="fas fa-users"/> Followers
-            </div>
-            <div className='option'>
-              <i className="fas fa-user-friends"/> Following
+            <NavLink to= {`/${user.username}/following`} className="link"><i className="fas fa-user-friends"/> Following</NavLink>
             </div>
           </div>
 

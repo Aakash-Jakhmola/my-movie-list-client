@@ -1,6 +1,7 @@
 import React from 'react'
 import './FeedCard.scss'
 
+
 import ProfilePic from '../../assets/profile_icon.png'
 
 export default function FeedCard(props) {
@@ -15,7 +16,7 @@ export default function FeedCard(props) {
         {props.review}
       </div>
       <div>
-        <img src={props.movie_details.poster_url} style={{height:'28rem'}}/>
+        <img src={props.movie_details.poster_url} style={{height:'28rem',margin:'0 5rem'}}/>
       </div>
     </div>
   )
