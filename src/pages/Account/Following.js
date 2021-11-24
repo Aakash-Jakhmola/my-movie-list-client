@@ -12,7 +12,7 @@ export default function Following() {
   const [following, setFollowing] = useState([])
 
   useEffect(()=>{
-    axios.get(`${API_URL}/users/${username}/following`)
+    axios.get(`${API_URL}/api/v2/profile/following?username=${username}`)
     .then((res)=>{
       console.log(res.data)
       setFollowing(res.data)
@@ -24,7 +24,9 @@ export default function Following() {
 
   return (
     <div style={{margin:'4rem 15rem'}}>
-      {following && following.map((f)=>(<UserMiniCard {...f}/>))}
+      {following && following.map((f)=>(<UserMiniCard username={f.following} 
+      firstname={f.following_details.firstname} 
+      lastname={f.following_details.lastname}/>))}
     </div>
   )
 }

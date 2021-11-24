@@ -11,6 +11,7 @@ import Account from "./pages/Account/Account";
 import Logout from "./pages/Logout/Logout";
 import LoginModal from "./Components/LoginModal/LoginModal";
 import SearchMovies from "./pages/SearchMovies/SearchMovies";
+import SearchUsers from "./pages/SearchUsers/SearchUsers";
 import MovieDetailsModal from "./Components/MovieDetailsModal/MovieDetailsModal";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/signup" render={(routeProps)=><SignUp {...routeProps}/>}/>
         <Route exact path="/login" render={(routeProps)=><LoginModal {...routeProps}/>}/>
         <Route exact path="/logout" render={(routeProps)=><Logout {...routeProps}/>}/>
+        <Route exact path="/search-user" render={(routeProps)=><SearchUsers {...routeProps}/>}/>
         <Route exact path="/search-movie/" component={SearchMovies}/>
         {/* <Route exact path='/movies/:id' render={(routeProps)=><MovieDetailsModal {...routeProps}/>} /> */}
         {/* <Route exact path="/search-movie/" render={(routeProps)=><SearchMovies {...routeProps}/>}/> */}

@@ -17,8 +17,16 @@ export default function NavBar() {
   const [searchMovies, setsearchMovies] = useState(false);
   const [findFriend, setFindFriend] = useState(false);
   const [movieQuery, setMovieQuery] = useState('')
+  const [userQuery, setUserQuery] = useState('')
 
   const history = useHistory();
+
+  const userQueryHandle = (e) => {
+    if(e.key === 'Enter' && userQuery.length > 0) {
+      history.push(`/search-user?name=${userQuery}`)
+      window.location.reload()
+    }
+  }
 
   const movieQueryHandler = (e) =>{
     if(e.key === 'Enter' && movieQuery.length > 0) {
@@ -52,6 +60,9 @@ export default function NavBar() {
                 className="form-control"
                 type="text"
                 placeholder="Find Friends"
+                value={userQuery}
+                onKeyPress={userQueryHandle}
+                onChange={(e)=>{setUserQuery(e.target.value)}}
                 style={{display:`${findFriend?'block':'none'}`}}
               />
             </FormGroup>
