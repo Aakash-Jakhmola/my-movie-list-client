@@ -54,7 +54,6 @@ function Feed() {
 
   return (
     <>
-      <NavBar/>
       <div className='feed-wrapper'>
         <div className='feed'>
         {feeds && feeds.length>0 && feeds.map((f)=>(

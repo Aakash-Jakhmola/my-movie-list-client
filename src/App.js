@@ -13,6 +13,7 @@ import LoginModal from "./Components/LoginModal/LoginModal";
 import SearchMovies from "./pages/SearchMovies/SearchMovies";
 import SearchUsers from "./pages/SearchUsers/SearchUsers";
 import MovieDetailsModal from "./Components/MovieDetailsModal/MovieDetailsModal";
+import NavBar from "./Components/Navbar/Navbar";
 
 function App() {
   const auth = useContext(AuthContext);
@@ -21,8 +22,13 @@ function App() {
   },[])
   
   return (
+   
     <React.Fragment>
+     
+      
       <Router>
+        <NavBar />
+        <div style={{height: '50px'}}></div>
         <Switch>
         <Route exact path="/" render={(routeProps)=><Home {...routeProps}/>}/>
         <Route exact path="/feed" render={(routeProps)=><Feed {...routeProps}/>}/>
