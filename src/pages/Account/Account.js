@@ -13,6 +13,12 @@ import Following from './Following';
 import './Account.scss'
 import { API_URL } from '../../utils/Constants'
 
+/* 
+@todo 
+  after updating also update in state.
+*/
+
+
 export default function Account(props) {
   
   const { username, page } = useParams();

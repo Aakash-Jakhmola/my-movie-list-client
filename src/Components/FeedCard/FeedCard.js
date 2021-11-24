@@ -15,7 +15,7 @@ export default function FeedCard(props) {
         {props.review}
       </div>
       <div>
-        <img src={props.movie_details.poster_url} style={{height:'28rem'}}/>
+        <img src={props.movie_details.poster_url} style={{height:'28rem',margin:'0 5rem'}}/>
       </div>
     </div>
   )
