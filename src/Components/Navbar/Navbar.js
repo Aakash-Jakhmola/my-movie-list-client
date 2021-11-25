@@ -55,7 +55,7 @@ export default function NavBar() {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <FormGroup>
+            <FormGroup className="navbar-form">
               <input
                 className="form-control"
                 type="text"
@@ -76,7 +76,7 @@ export default function NavBar() {
                 </svg>
               </button>
             </NavItem>
-            <FormGroup>
+            <FormGroup className="navbar-form">
               <input
                 className="form-control"
                 type="text"
