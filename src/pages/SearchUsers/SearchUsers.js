@@ -24,6 +24,7 @@ export default function SearchUsers(props) {
 
   return (
     <>
+    <NavBar />
     <div className='search-user-wrapper'>
       {users && users.length>0 && users.map((f)=>(<UserMiniCard {...f}/>))}
     </div>
