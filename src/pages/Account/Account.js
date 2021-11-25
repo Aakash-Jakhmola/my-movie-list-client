@@ -88,7 +88,6 @@ export default function Account(props) {
   return (
     <>
     {loading && <PageLoader/>}
-    <NavBar/>
     <div className='account' style={style} >
       <Container fluid>
         <Row >
