@@ -106,6 +106,7 @@ export default function NavBar() {
           </Nav>
         </Collapse>
       </Navbar>
+      <div style={{height: '50px'}}></div>
     </div>
   );
 }

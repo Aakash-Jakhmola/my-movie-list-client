@@ -87,6 +87,7 @@ export default function Account(props) {
 
   return (
     <>
+    <NavBar />
     {loading && <PageLoader/>}
     <div className='account' style={style} >
       <Container fluid>

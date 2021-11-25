@@ -24,11 +24,7 @@ function App() {
   return (
    
     <React.Fragment>
-     
-      
       <Router>
-        <NavBar />
-        <div style={{height: '50px'}}></div>
         <Switch>
         <Route exact path="/" render={(routeProps)=><Home {...routeProps}/>}/>
         <Route exact path="/feed" render={(routeProps)=><Feed {...routeProps}/>}/>

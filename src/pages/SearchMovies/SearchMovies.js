@@ -45,6 +45,7 @@ export default function SearchMovies(props) {
 
   return (
     <>
+    <NavBar />
       {loading && <PageLoader/>}
       <div className='res'>{movies.length} results found with '<b><i>{query.q}</i></b>'</div>
       <div className='search-movie-page' style={style}> 
