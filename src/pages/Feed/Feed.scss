@@ -1,32 +1,65 @@
 @import '../../utils/variables.scss';
 
 .feed-wrapper {
+  // box-sizing: border-box;
   padding: 2rem 10rem;
   color: white;
-  //position: relative;
-  width: fit-content;
+  width: 100%;
   margin: 0 auto;
   display: flex;
-
-  // grid-template-columns: 50% 25%;
-  .feed {
-    padding: 0 5rem;
-    height: fit-content;
+  //overflow: hidden;
+  .trending-movies {
     box-sizing: border-box;
-    //width: 75%;
-    //width: fit-content;
-    word-break: break-all;
-  }
-  .feed-details{
+    margin: 0 1rem;
+    border-radius: 10px;
+    position: -webkit-sticky;
     position: sticky;
-    top: 60px;
+    top: 83px;
+    height: calc(100vh - 135px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    //background-color: rebeccapurple;
+  }
+  .trending-movies::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  .trending-movies::-webkit-scrollbar-track {
+    background: none; 
+  }
+   
+  /* Handle */
+  .trending-movies::-webkit-scrollbar-thumb {
+    background:$lightblue; 
+    border-radius: 20px;
+  }
+  
+  /* Handle on hover */
+  .trending-movies::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  .feed {
+    padding: 0 2rem;
+    margin-bottom: 0;
     box-sizing: border-box;
+    word-break: break-all;
+    flex-grow: 1;
+  }
+
+  .feed-details{
+    height: fit-content;
+    position: sticky;
+    top: 83px;
+    box-sizing: border-box;
+    width: 25%;
     .user-card{
       box-sizing: border-box;
       background-color: $cardblue;
       padding: 0.6rem 5rem 0.6rem 1rem;
       margin: 0 1rem 1rem 1rem;
-      height: 4.5rem;
+      //height: fit-content;
       display: flex;
       border-radius: 10px;
       .user-info{
@@ -34,16 +67,12 @@
         padding-left: 1rem;
       }
     }
-  
     .user-options {
-      box-sizing: border-box;
       background-color: $cardblue;
-      padding: 0rem 0rem;
       margin: 1rem 1rem;
       height: fit-content;
       border-radius: 10px;
       overflow: hidden;
-      
       .option {
         box-sizing: border-box;
         width: 100% ;
@@ -51,23 +80,20 @@
         padding: 0.8rem 1rem 0.8rem 1rem;
         border-bottom: 1px solid $bgblue;
         cursor: pointer;
-
         .link {
           color: white;
         }
-
         .link:hover {
           overflow: unset;
           color: $btnyellow ;
           text-decoration: none;
         }
-
         i{
           margin-right: 1.5rem;
         }
       }
-      
     }
-
   }
+
+  
 }

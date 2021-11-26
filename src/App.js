@@ -15,19 +15,19 @@ import SearchUsers from "./pages/SearchUsers/SearchUsers";
 import MovieDetailsModal from "./Components/MovieDetailsModal/MovieDetailsModal";
 import NavBar from "./Components/Navbar/Navbar";
 
+
 function App() {
   const auth = useContext(AuthContext);
   useEffect(()=>{
     loadUser(auth.dispatch)
   },[])
-  
   return (
    
     <React.Fragment>
       <Router>
         <Switch>
         <Route exact path="/" render={(routeProps)=><Home {...routeProps}/>}/>
-        <Route exact path="/feed" render={(routeProps)=><Feed {...routeProps}/>}/>
+        {/* <Route exact path="/feed" render={(routeProps)=><Feed {...routeProps}/>}/> */}
         <Route exact path="/signup" render={(routeProps)=><SignUp {...routeProps}/>}/>
         <Route exact path="/login" render={(routeProps)=><LoginModal {...routeProps}/>}/>
         <Route exact path="/logout" render={(routeProps)=><Logout {...routeProps}/>}/>

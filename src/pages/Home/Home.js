@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 
 import './Home.scss'
+import Feed from '../Feed/Feed';
 import { AuthContext } from '../../state/Store';
 import LoginModal from '../../Components/LoginModal/LoginModal'
 import GirlWithCorn from '../../assets/girl-with-coke.jpg'
@@ -22,7 +23,7 @@ function Home() {
   },[loginOpen])
 
   if(auth.state.userLoggedIn)
-    return <Redirect to={`/${auth.state.username}`}/>
+    return <Feed/>
   return (
     <>
     <div className='home' style={homeStyle}>

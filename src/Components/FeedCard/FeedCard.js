@@ -5,7 +5,7 @@ import './FeedCard.scss'
 import ProfilePic from '../../assets/profile_icon.png'
 
 export default function FeedCard(props) {
-  console.log('from props',props)
+  ///console.log('from props',props)
   return (
     <div className='feed-card'>
       <div> 
@@ -15,8 +15,8 @@ export default function FeedCard(props) {
       <div className='review'>
         {props.review}
       </div>
-      <div>
-        <img src={props.movie_details.poster_url} style={{height:'28rem',margin:'0 5rem'}}/>
+      <div style={{display:'flex', justifyContent: 'center'}}>
+        <img src={props.movie_details.poster_url} style={{height:'28rem'}}/>
       </div>
     </div>
   )

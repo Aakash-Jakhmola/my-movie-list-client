@@ -117,9 +117,9 @@ export default function MovieSearchCard({ movie,
       }
     })
     .catch((err)=>{
-      console.log(err)
+      console.log(err.response)
       //generateErrorNotif()
-      setRatingError(err.response.data.toLowerCase())
+      //setRatingError(err.response.data.toLowerCase())
     })
   }
 

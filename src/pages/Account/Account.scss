@@ -12,9 +12,6 @@
     border-radius: 2rem;
     padding: 0.25rem 2rem;
     text-transform: capitalize;
-
-    
-    
     
   }
 
@@ -25,10 +22,9 @@
   .movie-card-container {
     width: 100%;
     margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap:5%;
     
   }
   .profile-wrapper {
@@ -107,8 +103,24 @@
  }
 }
 
+@media screen and (max-width: 1278px) {
+  .movie-card-container {
+    grid-template-columns: 48% 48% !important;
+    gap: 4% !important;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .movie-card-container {
+    grid-template-columns: 100% !important;
+    row-gap: 4% !important;
+  }
+}
+
+
 @media screen and (max-width: 770px) {
   .account{
     padding:2rem 2rem;
   }
+  
  }

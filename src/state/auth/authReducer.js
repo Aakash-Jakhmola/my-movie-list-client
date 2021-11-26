@@ -73,6 +73,7 @@ const authReducer = (state = initialAuthState, action) => {
     case SIGNUP_ERROR:
     
     case LOGOUT_SUCCESS:
+      return initialAuthState
     default: return state;
 
   }
