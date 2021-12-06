@@ -5,6 +5,16 @@ import './WatchListCardContainer.scss'
 import { API_URL } from '../../utils/Constants'
 import MovieSearchCard from '../../Components/MovieSearchCard/MovieSearchCard'
 
+
+
+const EmptyState = () => {
+  return <div> 
+    Nothinig to display.
+    Add movies now
+  </div>;
+}
+
+
 export default function WatchListCardContainer({username,setLoading}) {
 
   const [movieList, setMovieList] = React.useState([]);
@@ -30,15 +40,19 @@ export default function WatchListCardContainer({username,setLoading}) {
     loadMovies()
   },[])
 
+
+
+
+
   return (
     <div className='watchlist-page'>
-      {movieList && movieList.length>0 && !movieList[0].error  && movieList.map((movie) =>
+      {movieList && movieList.length>0 && !movieList[0].error ? movieList.map((movie) =>
         <MovieSearchCard 
           movie={movie.movie_details} 
           ratingModalOpen={modalOpen} 
           setRatingModalOpen={setModalOpen} 
           fromAccount={true}/>
-      )}
+      ): <EmptyState/> }
     </div>
   )
 }

@@ -7,8 +7,51 @@
   height: 4.5rem;
   display: flex;
   border-radius: 10px;
+  align-items: center;
+
+  .umc-buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  .umc-btn {
+    font-family: monospace, monospace;
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    letter-spacing: 0.3mm;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .follow-btn {
+    color:white;
+    background: rgb(196, 73, 140);
+  }
+
+  .follow-btn:hover {
+    background-color: rgb(173, 39, 113);
+  }
+
+  .unfollow-btn {
+    backgroundcolor:white;
+    color: rgb(196, 73, 140);
+  }
+  .unfollow-btn:hover{
+    background-color: rgb(221, 211, 211);
+  }
+
   .user-info{
     width: 100%;
     padding-left: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover {
+    color: $btnyellowhover;
   }
 }

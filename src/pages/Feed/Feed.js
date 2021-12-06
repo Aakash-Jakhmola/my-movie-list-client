@@ -70,15 +70,17 @@ function Feed() {
     <>
       <NavBar />
       <div className='feed-wrapper'>
-
         <div className='trending-movies'>
           Trending Movies
+
           {trendingMovies && trendingMovies.length > 0 && trendingMovies.map((m) => (
             <MovieSearchCard
               movie={m}
               ratingModalOpen={ratingModalOpen}
-              setRatingModalOpen={setRatingModalOpen} />)
+              setRatingModalOpen={setRatingModalOpen}
+             />)
           )}
+
         </div>
 
         <div className='feed'>
@@ -99,7 +101,7 @@ function Feed() {
 
           <div className='user-options'>
             <div className='option'>
-              <NavLink to="/" className="link"><i className="fas fa-film" /> Movies</NavLink>
+              <NavLink to={`/${user.username}`} className="link"><i className="fas fa-film" /> Movies</NavLink>
             </div>
             <div className='option'>
               <NavLink to={`/${user.username}/watchlist`} className="link"><i className="far fa-clock" /> Watchlist</NavLink>

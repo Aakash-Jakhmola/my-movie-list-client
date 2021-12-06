@@ -25,7 +25,6 @@ function MovieCardContainer({ username, setLoading }) {
   const loadMovies = (clearList = false) => {
     setLoading(true)
     let url = API_URL + "/api/v2/fetch_movie_list" + "?&page_number=" + offset + "&username=" + username + "&sort_key=" + sortBy;
-
     axios.get(url)
       .then(async (res) => {
         console.log(res.data)
