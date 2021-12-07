@@ -43,12 +43,15 @@ export const loginUser = (dispatch, credentials) => {
   axios.post(`${API_URL}/users/login`,credentials,{withCredentials:true})
     .then((res)=>{
       console.log(res)
-      Cookies.set("username",res.data.username)
-      Cookies.set("user_id",res.data._id)
-      dispatch(loginSuccess(res.data));
+      if(res.data) {
+        Cookies.set("username",res.data.user_data.username)
+        Cookies.set("user_id",res.data.user_data._id)
+        Cookies.set("jwt", res.data.jwt)
+        dispatch(loginSuccess(res.data.user_data));
+      }
     })
     .catch((error)=>{
-      console.log(error.response,error.response.data)
+      // console.log(error.response,error.response.data)
       if(error.response && error.response.data) {
         if(error.response.data instanceof String)
           dispatch(loginError(error.response.data.toLowerCase()))
