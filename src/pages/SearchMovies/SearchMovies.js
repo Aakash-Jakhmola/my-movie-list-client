@@ -6,7 +6,6 @@ import { API_URL } from '../../utils/Constants'
 import PageLoader from '../../Components/PageLoader/PageLoader'
 import NavBar from '../../Components/Navbar/Navbar'
 import MovieSearchCard from '../../Components/MovieSearchCard/MovieSearchCard'
-import RatingModal from '../../Components/RatingModal/RatingModal'
 import './SearchMovies.scss'
 
 export default function SearchMovies(props) {

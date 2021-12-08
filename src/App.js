@@ -1,10 +1,8 @@
-import React, {useContext, useEffect, Suspense} from "react";
+import React, {useContext, useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import {Store, AuthContext} from "./state/Store";
 import { loadUser } from "./state/auth/authActions";
-import PageLoader from "./Components/PageLoader/PageLoader";
-import Feed from "./pages/Feed/Feed";
 import Home from './pages/Home/Home';
 import SignUp from "./pages/SignUp/SignUp";
 import Account from "./pages/Account/Account";
@@ -12,8 +10,6 @@ import Logout from "./pages/Logout/Logout";
 import LoginModal from "./Components/LoginModal/LoginModal";
 import SearchMovies from "./pages/SearchMovies/SearchMovies";
 import SearchUsers from "./pages/SearchUsers/SearchUsers";
-import MovieDetailsModal from "./Components/MovieDetailsModal/MovieDetailsModal";
-import NavBar from "./Components/Navbar/Navbar";
 
 
 function App() {

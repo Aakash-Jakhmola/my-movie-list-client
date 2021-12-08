@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie'
 import axios from 'axios'
 import { API_URL } from '../../utils/Constants';
 
@@ -58,10 +57,13 @@ export const loginUser = (dispatch, credentials) => {
     })
 }
 
-export const logOutUser = (dispatch) => {
-  axios.post(`${API_URL}/users/logout`,{withCredentials:true})
+export const logOutUser = async(dispatch) => {
+  await axios.post(`${API_URL}/users/logout`,{},{withCredentials:true})
+
   .then(() => {
+    console.log('here2');
     dispatch(logOut());
+  
   })
   .catch((err) => console.log(err))
 };

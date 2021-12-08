@@ -22,16 +22,17 @@ function Home() {
     }
   },[loginOpen])
 
-  if(auth.state.userLoggedIn)
-    return <Feed/>
+  
+  if(auth.state.userLoggedIn) {
+    return <Feed setLoginOpen={setLoginOpen}/>
+  } else
   return (
     <>
     <div className='home' style={homeStyle}>
       <div className='intro'>
-        
         <div className = 'intro-nav'>
           <div className='intro-nav-logo'>
-            here will be logo
+            Here will be logo
           </div>
           <div className='intro-nav-links'>
             <Link to='/'>About</Link>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useContext, useState, useEffect } from 'react'
 import './Navbar.scss'
 import {
   Collapse,
@@ -10,7 +10,9 @@ import {
   NavbarText,
   FormGroup
 } from 'reactstrap';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, Redirect } from 'react-router-dom'
+import {  logOutUser } from '../../state/auth/authActions';
+import { AuthContext } from '../../state/Store';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,9 +20,11 @@ export default function NavBar() {
   const [findFriend, setFindFriend] = useState(false);
   const [movieQuery, setMovieQuery] = useState('')
   const [userQuery, setUserQuery] = useState('')
-
   const history = useHistory();
+  const auth = useContext(AuthContext)
+  const [logoutRedirect, setLogoutRedirect] = useState(false);
 
+ 
   const userQueryHandle = (e) => {
     if (e.key === 'Enter' && userQuery.length > 0) {
       history.push(`/search-user?name=${userQuery}`)
@@ -38,17 +42,12 @@ export default function NavBar() {
   const toggle = () => setIsOpen(!isOpen);
   const ref = React.createRef();
 
-  useEffect(() => {
-    // const handleScroll = () => {
-    //   if(!ref.current)return
-    //   if (window.scrollY > 60) ref.current.classList.add("fixed-top");
-    //   else ref.current.classList.remove("fixed-top");
-    // };
-    // window.addEventListener("scroll", handleScroll);
-    // return () => window.removeEventListener("scroll", handleScroll);
-  });
+  const logOutLocal = async() => {
+    await logOutUser(auth.dispatch);
+    setLogoutRedirect(true);
+  }
 
-  return (
+  return logoutRedirect ? (<Redirect to="/"/>) : (
     <div ref={ref}>
       <Navbar dark expand='md' fixed='top' className='navbar'>
         <NavbarText><Link to="/" className="home-page-link"> Logo here </Link></NavbarText>
@@ -95,7 +94,7 @@ export default function NavBar() {
               </button>
             </NavItem>
             <NavItem>
-              <NavLink href="/logout" className='navlink' activeClassName="active">
+              <NavLink className='navlink' activeClassName="active" onClick={logOutLocal}>
                 <svg width="26" height="26" fill="none" viewBox="0 0 24 24">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15.75 8.75L19.25 12L15.75 15.25"></path>
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 12H10.75"></path>

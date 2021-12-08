@@ -7,10 +7,10 @@ import { API_URL } from '../../utils/Constants'
 import NavBar from '../../Components/Navbar/Navbar'
 import { AuthContext } from '../../state/Store'
 import FeedCard from '../../Components/FeedCard/FeedCard'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import MovieSearchCard from '../../Components/MovieSearchCard/MovieSearchCard'
 
-function Feed() {
+function Feed(props) {
   const auth = useContext(AuthContext)
 
   const inituser = {
@@ -28,11 +28,12 @@ function Feed() {
   const [trendingMovies, setTrendingMovies] = useState([])
   const [ratingModalOpen, setRatingModalOpen] = useState(false)
 
+  
   useState(() => {
-    console.log(auth)
+    console.log(auth);
+    props.setLoginOpen(false)
     axios.get(`${API_URL}/api/v2/users/feed`, { withCredentials: true })
       .then((res) => {
-        //console.log(res.data)
         setFeeds(res.data)
       })
       .catch((err) => {
@@ -41,16 +42,13 @@ function Feed() {
   }, [])
 
   useEffect(() => {
-    //setLoading(true)
     axios.get(`${API_URL}/users/${auth.state.username}`)
       .then((res) => {
         setUser(res.data);
         console.log(res.data)
-        //setLoading(false)
       })
       .catch((err) => {
         console.log(err)
-        //setLoading(false);
       })
   }, [])
 

@@ -1,13 +1,12 @@
 import React, {useContext, useEffect} from 'react'
 import { Redirect } from "react-router-dom";
-import Cookies from 'js-cookie';
 import { logOutUser } from '../../state/auth/authActions';
+import { AuthContext } from '../../state/Store';
 
 export default function Logout() {
-  
-  useEffect(()=>{
-    const auth = useContext(AuthContext)
-    logOutUser(auth.dispatch);
+  const auth = useContext(AuthContext)
+  useEffect(async()=>{
+    await logOutUser(auth.dispatch);
   },[])
 
   return (
