@@ -42,12 +42,7 @@ export const loginUser = (dispatch, credentials) => {
   dispatch(loginRequest())
   axios.post(`${API_URL}/users/login`,credentials,{withCredentials:true})
     .then((res)=>{
-      console.log(res)
       if(res.data) {
-        console.log(res.data.user_data);
-        Cookies.set("username",res.data.user_data.username, {path:'', secure:true})
-        Cookies.set("user_id",res.data.user_data._id,{ path:'', secure:true, sameSite:false})
-        Cookies.set("jwt", res.data.jwt,{ path:'', secure:true, sameSite:false})
         dispatch(loginSuccess(res.data.user_data));
       }
     })
@@ -64,10 +59,11 @@ export const loginUser = (dispatch, credentials) => {
 }
 
 export const logOutUser = (dispatch) => {
-  dispatch(logOut());
-  Cookies.remove("jwt", {maxAge:7*24*60*60*1000, secure:true,sameSite:'none',path:'/'});
-  Cookies.remove("user_id");
-  Cookies.remove("username");
+  axios.post(`${API_URL}/users/logout`,{withCredentials:true})
+  .then(() => {
+    dispatch(logOut());
+  })
+  .catch((err) => console.log(err))
 };
 
 export const loadUser = (dispatch) =>{
