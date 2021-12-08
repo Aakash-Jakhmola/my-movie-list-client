@@ -44,9 +44,9 @@ export const loginUser = (dispatch, credentials) => {
     .then((res)=>{
       console.log(res)
       if(res.data) {
-        Cookies.set("username",res.data.user_data.username)
-        Cookies.set("user_id",res.data.user_data._id)
-        Cookies.set("jwt", res.data.jwt)
+        Cookies.set("username",res.data.user_data.username, {domain:'https://priceless-hamilton-eafe97.netlify.app'})
+        Cookies.set("user_id",res.data.user_data._id,{domain:'https://priceless-hamilton-eafe97.netlify.app'})
+        Cookies.set("jwt", res.data.jwt,{domain:'https://priceless-hamilton-eafe97.netlify.app'})
         dispatch(loginSuccess(res.data.user_data));
       }
     })
