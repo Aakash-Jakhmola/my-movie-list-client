@@ -30,7 +30,7 @@ function MovieCardContainer({ username, setLoading }) {
         console.log(res.data)
         if (clearList) {
           await setMovieList([]);
-          setMovieList(res.data);
+          await setMovieList(res.data);
         } else {
           setMovieList([...movieList, ...res.data]);
         }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import ProfilePic from '../../assets/profile_icon.png';
 import { API_URL } from '../../utils/Constants';
 
-export default function UserMiniCard({ user_details, is_following }) {
+export default function UserMiniCard({ user_details, is_following, fromFollowingList }) {
   // console.log(props)
 
 
@@ -15,7 +15,8 @@ export default function UserMiniCard({ user_details, is_following }) {
     if (is_following) {
       setIsFollowing(true);
     }
-  })
+    console.log('from following', fromFollowingList)
+  },[])
 
   const followUser = () => {
     axios.post(`${API_URL}/api/v2/profile/follow`, { following_username: user_details.username }, { withCredentials: true })
@@ -30,6 +31,8 @@ export default function UserMiniCard({ user_details, is_following }) {
       .catch((err) => { console.log(err) })
   }
 
+  if(fromFollowingList && isFollowing===false)
+    return (<></>);
 
   return (
     <div className='user-mini-card'>
