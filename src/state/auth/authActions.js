@@ -46,8 +46,8 @@ export const loginUser = (dispatch, credentials) => {
       if(res.data) {
         console.log(res.data.user_data);
         Cookies.set("username",res.data.user_data.username, {path:'', secure:true})
-        Cookies.set("user_id",res.data.user_data._id,{ path:'', secure:true})
-        Cookies.set("jwt", res.data.jwt,{ path:'', secure:true})
+        Cookies.set("user_id",res.data.user_data._id,{ path:'', secure:true, sameSite:false})
+        Cookies.set("jwt", res.data.jwt,{ path:'', secure:true, sameSite:false})
         dispatch(loginSuccess(res.data.user_data));
       }
     })
