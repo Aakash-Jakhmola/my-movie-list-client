@@ -65,7 +65,7 @@ export const loginUser = (dispatch, credentials) => {
 
 export const logOutUser = (dispatch) => {
   dispatch(logOut());
-  Cookies.remove("jwt");
+  Cookies.remove("jwt", {maxAge:7*24*60*60*1000, secure:true,sameSite:'none',path:'/'});
   Cookies.remove("user_id");
   Cookies.remove("username");
 };
