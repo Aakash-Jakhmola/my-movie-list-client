@@ -12,7 +12,7 @@ export default function SearchUsers(props) {
   const [users, setUsers] = useState([])
 
   useEffect(()=>{
-    axios.get(`${API_URL}/api/v2/profile/search?name=${query.name}`)
+    axios.get(`${API_URL}/api/v2/profile/search?name=${query.name}`, {withCredentials: true})
     .then((res)=>{
       console.log(res.data)
       setUsers(res.data)
@@ -26,7 +26,7 @@ export default function SearchUsers(props) {
     <>
     <NavBar />
     <div className='search-user-wrapper'>
-      {users && users.length>0 && users.map((f)=>(<UserMiniCard {...f}/>))}
+      {users && users.length>0 && users.map((f)=>(<UserMiniCard {...f} />))}
     </div>
     </>
   )

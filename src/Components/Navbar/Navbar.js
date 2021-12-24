@@ -51,7 +51,7 @@ export default function NavBar() {
   return (
     <div ref={ref}>
       <Navbar dark expand='md' fixed='top' className='navbar'>
-        <NavbarText>Logo here</NavbarText>
+        <NavbarText><Link to="/" className="home-page-link"> Logo here </Link></NavbarText>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
