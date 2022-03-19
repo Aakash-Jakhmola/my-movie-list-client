@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 import { API_URL } from '../../utils/Constants';
 
 import {
@@ -11,8 +11,8 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_ERROR,
-  LOGOUT_SUCCESS
-} from './authConsts'
+  LOGOUT_SUCCESS,
+} from './authConsts';
 
 export const loginRequest = () => ({ type: LOGIN_REQUEST });
 export const loginError = (err) => ({ type: LOGIN_ERROR, payload: err });
@@ -38,49 +38,46 @@ export const loadUserError = () => ({ type: LOAD_USER_ERROR });
 export const logOut = () => ({ type: LOGOUT_SUCCESS });
 
 export const loginUser = (dispatch, credentials) => {
-  dispatch(loginRequest())
-  axios.post(`${API_URL}/account/login`,credentials,{withCredentials:true})
-    .then((res)=>{
-      if(res.data) {
-        console.log(res.data)
+  dispatch(loginRequest());
+  axios
+    .post(`${API_URL}/account/login`, credentials, { withCredentials: true })
+    .then((res) => {
+      if (res.data) {
+        console.log(res.data);
         dispatch(loginSuccess(res.data));
-
       }
     })
-    .catch((error)=>{
+    .catch((error) => {
       // console.log(error.response,error.response.data)
-      if(error.response && error.response.data) {
-        if(error.response.data instanceof String)
-          dispatch(loginError(error.response.data.toLowerCase()))
-        else dispatch(loginError('Some Error Occured'))
+      if (error.response && error.response.data) {
+        if (error.response.data instanceof String)
+          dispatch(loginError(error.response.data.toLowerCase()));
+        else dispatch(loginError(error.response.data.message));
       } else {
-        dispatch(loginError('something went wrong'))
+        dispatch(loginError('something went wrong'));
       }
-    })
-}
+    });
+};
 
-export const logOutUser = async(dispatch) => {
-  
+export const logOutUser = async (dispatch) => {
   // await axios.post(`${API_URL}/account/logout`,{},{withCredentials:true})
-
   // .then(() => {
   //   console.log('here2');
   //   dispatch(logOut());
-  
   // })
   // .catch((err) => console.log(err))
 };
 
-export const loadUser = (dispatch) =>{
-  dispatch(loadUserRequest())
-  axios.get(`${API_URL}/account/load`,{withCredentials:true})
-  .then((res)=>{
-    if(res.data.error)
+export const loadUser = (dispatch) => {
+  dispatch(loadUserRequest());
+  axios
+    .get(`${API_URL}/account/load`, { withCredentials: true })
+    .then((res) => {
+      if (res.data.error) dispatch(loadUserError());
+      else dispatch(loadUserSuccess(res.data));
+    })
+    .catch((err) => {
+      console.log(err);
       dispatch(loadUserError());
-    else dispatch(loadUserSuccess(res.data))
-  })
-  .catch((err)=>{
-    console.log(err)
-    dispatch(loadUserError());
-  })
-}
+    });
+};
