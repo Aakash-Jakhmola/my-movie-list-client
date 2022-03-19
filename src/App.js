@@ -16,7 +16,7 @@ function App() {
   const auth = useContext(AuthContext);
   useEffect(()=>{
     loadUser(auth.dispatch)
-  },[])
+  },[auth.dispatch])
   return (
    
     <React.Fragment>

@@ -123,7 +123,7 @@ export default function MovieSearchCard({ movie,
     })
   }
 
-  if(!movie.poster_url) 
+  if(!movie.posterUrl) 
     return <></>
 
   if(modalOpen && !auth.state.userLoggedIn) 
@@ -134,7 +134,7 @@ export default function MovieSearchCard({ movie,
       <ReactNotification/>
       <div className='movie-search-card'>
       <div className='poster'>
-        <img src={movie.poster_url}/>
+        <img src={movie.posterUrl}/>
       </div>
       <div className='info'>
         <div className='title'>{movie.title}</div>

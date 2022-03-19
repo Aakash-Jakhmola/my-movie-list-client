@@ -5,9 +5,9 @@ import { AuthContext } from '../../state/Store';
 
 export default function Logout() {
   const auth = useContext(AuthContext)
-  useEffect(async()=>{
-    await logOutUser(auth.dispatch);
-  },[])
+  useEffect(()=>{
+    logOutUser(auth.dispatch);
+  })
 
   return (
     <Redirect to="/"/>
