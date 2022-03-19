@@ -12,7 +12,7 @@
     padding: 1.5rem 1.5rem;
     font-size: 1.1rem;
     a {
-      margin:0 2rem;
+      margin: 0 2rem;
       text-decoration: inherit;
       color: inherit;
     }
@@ -21,18 +21,21 @@
     }
     .intro-nav-logo {
       float: left;
+      font-weight: bold;
+      font-size: 1.5rem;
+      letter-spacing: 0.4rem;
     }
     .intro-nav-links {
       float: right;
     }
-    .signin-btn{
+    .signin-btn {
       font-size: 15px;
       border: 1px solid white;
       border-radius: 20px;
       padding: 8px 15px;
       color: white;
       outline: none;
-      background:none;
+      background: none;
     }
     .signin-btn:hover {
       background-color: white;
@@ -41,7 +44,7 @@
     }
   }
 
-  .intro-body{
+  .intro-body {
     margin-top: 6rem;
     padding: 0 5rem;
     display: flex;
@@ -52,7 +55,7 @@
         margin: 0 auto;
         text-align: left;
         font-size: 1.3rem;
-        p{
+        p {
           margin-bottom: 1rem;
         }
       }
@@ -60,10 +63,10 @@
     button {
       font-family: monospace, monospace;
       font-size: 15px;
-      color:white;
+      color: white;
       background: $btnyellow;
       border: 1px solid $btnyellow;
-      margin: 1rem 2rem 0 0;  
+      margin: 1rem 2rem 0 0;
       border-radius: 20px;
       padding: 8px 15px;
       letter-spacing: 0.3mm;
@@ -78,5 +81,4 @@
       width: 40%;
     }
   }
-
 }
