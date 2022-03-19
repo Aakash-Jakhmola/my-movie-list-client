@@ -1,17 +1,30 @@
-@import "../../utils/variables.scss";
+@import '../../utils/variables.scss';
 
 .signup {
   display: flex;
   height: 100vh;
   background-color: yellow;
   .signup-left {
-    width: 50%;
+    width: 100%;
     background-color: white;
+
+    .back-btn {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      top: 16%;
+      left: 16%;
+    }
+
+    .back-btn:hover {
+      cursor: pointer;
+    }
+
     .signup-box {
       margin: 0 auto;
       width: 60%;
       position: relative;
-      top: 40%;
+      top: 50%;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
@@ -20,9 +33,9 @@
       }
       .form-control:focus {
         border: 3px solid $bgblue;
-        box-shadow: none!important;
+        box-shadow: none !important;
       }
-      h2{
+      h2 {
         float: left;
         margin-bottom: 1.5rem;
         font-weight: 700;
@@ -31,26 +44,37 @@
         font-family: monospace, monospace;
         padding: 6px 0;
         width: 100%;
-        background:$bgblue;
+        background: $bgblue;
         border-radius: 5px;
         color: white;
         outline: none;
+        margin-top: 20px;
       }
       button:hover {
         background-color: black;
       }
+
+      .login-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-link:hover {
+        a:hover {
+          text-decoration: none;
+        }
+      }
     }
   }
   .signup-right {
-    width: 50%;
     background-color: $bgblue;
     color: white;
     .right-box-content {
-      width: 50%;
       margin: 0 auto;
       text-align: left;
       position: relative;
-      top: 70%;
+      padding: 20%;
+      top: 40%;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
