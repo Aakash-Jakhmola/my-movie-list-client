@@ -26,14 +26,15 @@ const initialAuthState = {
 }
 
 const authReducer = (state = initialAuthState, action) => {
+  console.log('payload', action.payload)
   switch(action.type) {
     case LOAD_USER_REQUEST:
       return {...state,userLoading:true}
     case LOAD_USER_SUCCESS: 
       return {
         ...state,
-        user_id:action.payload.id,
-        username:action.payload.username,
+        user_id:action.payload[0].id,
+        username:action.payload[0].username,
         userLoading:false,
         userLoggedIn:true
       }

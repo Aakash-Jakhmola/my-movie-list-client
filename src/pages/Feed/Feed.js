@@ -42,27 +42,27 @@ function Feed(props) {
   }, [])
 
   useEffect(() => {
-    axios.get(`${API_URL}/users/${auth.state.username}`)
+    axios.get(`${API_URL}/account?username=${auth.state.username}`)
       .then((res) => {
-        setUser(res.data);
+        setUser(res.data[0]);
         console.log(res.data)
       })
       .catch((err) => {
         console.log(err)
       })
-  }, [])
+  }, [auth.state])
 
   useEffect(() => {
-    axios.get(`${API_URL}/api/v2/trending`)
+    axios.get(`${API_URL}/movie/trending`)
       .then((res) => {
         console.log('trending', res.data)
-        setTrendingMovies(res.data)
+        setTrendingMovies(res.data);
+        
       })
       .catch((err) => {
         console.log(err.response)
       })
   }, [])
-
 
   return (
     <>

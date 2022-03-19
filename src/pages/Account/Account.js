@@ -25,6 +25,8 @@ export default function Account(props) {
   const history = useHistory();
   const location = useLocation();
 
+  console.log(page);
+
   const inituser = {
     username : username,
     firstname : "",
@@ -52,11 +54,11 @@ export default function Account(props) {
     }
   },[loading])
 
-  useEffect(async() => {
+  useEffect(() => {
     setLoading(true)
-		axios.get(`${API_URL}/users/${username}`)
+		axios.get(`${API_URL}/account?username=${username}`)
     .then((res) => {
-			setUser(res.data);
+			setUser(res.data[0]);
       console.log(res.data)
       setLoading(false)
     })
@@ -92,7 +94,7 @@ export default function Account(props) {
     <div className='account' style={style} >
       <Container fluid>
         <Row >
-          <Col className='text-md-left'> <h1 style={{fontSize:"200%"}}>{user.firstname + " " + user.lastname} </h1></Col>
+          <Col className='text-md-left'> <h1 style={{fontSize:"200%"}}>{`${user.firstname} ${user.lastname ? user.lastname : ""}`} </h1></Col>
         </Row>
         <Row >
           <Col className='text-md-left'><h5 style={{fontSize:"100%"}}>@{user.username}</h5></Col>

@@ -39,10 +39,12 @@ export const logOut = () => ({ type: LOGOUT_SUCCESS });
 
 export const loginUser = (dispatch, credentials) => {
   dispatch(loginRequest())
-  axios.post(`${API_URL}/users/login`,credentials,{withCredentials:true})
+  axios.post(`${API_URL}/account/login`,credentials,{withCredentials:true})
     .then((res)=>{
       if(res.data) {
-        dispatch(loginSuccess(res.data.user_data));
+        console.log(res.data)
+        dispatch(loginSuccess(res.data));
+
       }
     })
     .catch((error)=>{
@@ -58,19 +60,20 @@ export const loginUser = (dispatch, credentials) => {
 }
 
 export const logOutUser = async(dispatch) => {
-  await axios.post(`${API_URL}/users/logout`,{},{withCredentials:true})
-
-  .then(() => {
-    console.log('here2');
-    dispatch(logOut());
   
-  })
-  .catch((err) => console.log(err))
+  // await axios.post(`${API_URL}/account/logout`,{},{withCredentials:true})
+
+  // .then(() => {
+  //   console.log('here2');
+  //   dispatch(logOut());
+  
+  // })
+  // .catch((err) => console.log(err))
 };
 
 export const loadUser = (dispatch) =>{
   dispatch(loadUserRequest())
-  axios.get(`${API_URL}/users/loadUser`,{withCredentials:true})
+  axios.get(`${API_URL}/account/load`,{withCredentials:true})
   .then((res)=>{
     if(res.data.error)
       dispatch(loadUserError());
