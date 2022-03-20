@@ -55,7 +55,7 @@ function Feed(props) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/movie/trending`)
+      .get(`${API_URL}/movie/trending`, { withCredentials: true })
       .then((res) => {
         console.log('trending', res.data);
         setTrendingMovies(res.data);

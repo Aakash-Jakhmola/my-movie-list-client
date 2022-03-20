@@ -77,7 +77,7 @@ export default function MovieSearchCard({
   }
 
   function watchLaterMovie() {
-    let data = { movie_id: movie.id, watch_later: true };
+    let data = { movieId: movie.movieId, hasWatched: false };
     //console.log(movie)
     axios
       .post(`${API_URL}/movie/add`, data, { withCredentials: true })
@@ -152,7 +152,7 @@ export default function MovieSearchCard({
         <div className='info'>
           <div className='title'>{movie.title}</div>
           <div>
-            {movie.release_date && movie.release_date.substring(0, 4)} .{' '}
+            {movie.releaseDate && movie.releaseDate.substring(0, 4)} .{' '}
             {movie.language}
           </div>
           <div>
