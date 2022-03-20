@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react'
-import './ReviewCard.scss'
-import ReactStars from "react-rating-stars-component";
+import React, { useState, useContext } from 'react';
+import './ReviewCard.scss';
+import ReactStars from 'react-rating-stars-component';
 import axios from 'axios';
-import ReactNotification, { store } from 'react-notifications-component'
-import 'react-notifications-component/dist/theme.css'
+import ReactNotification, { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 
 import { AuthContext } from '../../state/Store';
 import { API_URL } from '../../utils/Constants';
@@ -12,93 +12,97 @@ import RatingModal from '../RatingModal/RatingModal';
 import MovieDetailsModal from '../MovieDetailsModal/MovieDetailsModal';
 
 function ReviewCard({ movie, username }) {
+  const auth = useContext(AuthContext);
 
-  const auth = useContext(AuthContext)
-
-  const [detailModalOpen, setDetailModalOpen] = useState(false)
-  const [updateModalOpen, setUpdateModalOpen] = useState(false)
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
-  const [rating, setRating] = useState(movie.score)
-  const [review, setReview] = useState(movie.review)
-  const [ratingError, setRatingError] = useState('')
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [rating, setRating] = useState(movie.score);
+  const [review, setReview] = useState(movie.review);
+  const [ratingError, setRatingError] = useState('');
 
   React.useEffect(() => {
-    console.log(auth.state.username)
-  }, [])
+    console.log(auth.state.username);
+  }, []);
 
   const generateUpdateSuccessNotif = () => {
     store.addNotification({
-      title: "Success",
-      message: "Review Successfully Updated",
-      type: "success",
-      insert: "top",
-      container: "top-right",
-      animationIn: ["animate__animated", "animate__fadeIn"],
-      animationOut: ["animate__animated", "animate__fadeOut"],
+      title: 'Success',
+      message: 'Review Successfully Updated',
+      type: 'success',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animate__animated', 'animate__fadeIn'],
+      animationOut: ['animate__animated', 'animate__fadeOut'],
       dismiss: {
         duration: 3000,
-        onScreen: true
-      }
+        onScreen: true,
+      },
     });
-  }
-
+  };
 
   const generatDeleteSuccessNotif = () => {
     store.addNotification({
-      title: "Success",
-      message: "Movie Successfully Deleted",
-      type: "success",
-      insert: "top",
-      container: "top-right",
-      animationIn: ["animate__animated", "animate__fadeIn"],
-      animationOut: ["animate__animated", "animate__fadeOut"],
+      title: 'Success',
+      message: 'Movie Successfully Deleted',
+      type: 'success',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animate__animated', 'animate__fadeIn'],
+      animationOut: ['animate__animated', 'animate__fadeOut'],
       dismiss: {
         duration: 3000,
-        onScreen: true
-      }
+        onScreen: true,
+      },
     });
-  }
-
+  };
 
   function deleteMovie() {
-    axios.delete(`${API_URL}/api/v2/delete_movie?movie_id=${movie.movie_id}&watch_later=false`, { withCredentials: true })
+    axios
+      .delete(`${API_URL}/movie/${movie.movieId}/remove?hasWatched=true`, {
+        withCredentials: true,
+      })
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         //generatDeleteSuccessNotif()
-        window.location.reload()
+        window.location.reload();
       })
       .catch((err) => {
-        console.log(err.response)
-      })
+        console.log(err.response);
+      });
   }
 
   function updateReview() {
     if (!rating) {
-      setRatingError('give some rating')
-      return
+      setRatingError('give some rating');
+      return;
     }
-    console.log(movie)
-    let data = { movie_id: movie.movie_id, new_score: rating, new_review: review }
-    axios.patch(`${API_URL}/api/v2/update_movie`, data, { withCredentials: true })
+    console.log(movie);
+    let data = {
+      movie_id: movie.movie_id,
+      new_score: rating,
+      new_review: review,
+    };
+    axios
+      .patch(`${API_URL}/api/v2/update_movie`, data, { withCredentials: true })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         //generateUpdateSuccessNotif()
         if (res.data.error) {
-          setRatingError(res.data.error)
+          setRatingError(res.data.error);
           //generateErrorNotif();
-        }
-        else {
+        } else {
           //generateSuccessNotif();
-          setRatingError('')
-          setUpdateModalOpen(false)
+          setRatingError('');
+          setUpdateModalOpen(false);
         }
       })
       .catch((err) => {
-        console.log(err)
-        console.log(err.response)
+        console.log(err);
+        console.log(err.response);
         //generateErrorNotif()
-        setRatingError(err.response.data.toLowerCase())
-      })
+        setRatingError(err.response.data.toLowerCase());
+      });
   }
   return (
     <>
@@ -107,20 +111,29 @@ function ReviewCard({ movie, username }) {
         <img src={movie?.posterUrl} />
         <div className='body'>
           <div className='title'>{movie?.title}</div>
-          <div className='review'>
-            {movie.review}
-          </div>
+          <div className='review'>{movie.review}</div>
           <div className='card-footer'>
-            <div className='update' style={{ display: auth.state.username === username ? 'block' : 'none' }}>
-              <i className="far fa-edit" onClick={() => setUpdateModalOpen(true)} />
-              <i className="far fa-trash-alt" onClick={() => setDeleteModalOpen(true)} />
+            <div
+              className='update'
+              style={{
+                display: auth.state.username === username ? 'block' : 'none',
+              }}
+            >
+              <i
+                className='far fa-edit'
+                onClick={() => setUpdateModalOpen(true)}
+              />
+              <i
+                className='far fa-trash-alt'
+                onClick={() => setDeleteModalOpen(true)}
+              />
             </div>
             <div className='stars'>
               <ReactStars
                 count={5}
                 size={18}
                 value={movie.score / 2}
-                activeColor="#ffd700"
+                activeColor='#ffd700'
                 isHalf={true}
                 edit={false}
               />
@@ -129,23 +142,28 @@ function ReviewCard({ movie, username }) {
         </div>
       </div>
 
-      {updateModalOpen && <RatingModal
-        ratingModalOpen={updateModalOpen}
-        setRatingModalOpen={setUpdateModalOpen}
-        rating={rating / 2}
-        setRating={setRating}
-        review={review}
-        setReview={setReview}
-        ratingError={ratingError}
-        submitReview={updateReview} />}
+      {updateModalOpen && (
+        <RatingModal
+          ratingModalOpen={updateModalOpen}
+          setRatingModalOpen={setUpdateModalOpen}
+          rating={rating / 2}
+          setRating={setRating}
+          review={review}
+          setReview={setReview}
+          ratingError={ratingError}
+          submitReview={updateReview}
+        />
+      )}
 
-      {deleteModalOpen && <DeleteModal
-        message='Do you want to delete this movie?'
-        setDeleteModalOpen={setDeleteModalOpen}
-        deleteMovie={deleteMovie} />}
-
+      {deleteModalOpen && (
+        <DeleteModal
+          message='Do you want to delete this movie?'
+          setDeleteModalOpen={setDeleteModalOpen}
+          deleteMovie={deleteMovie}
+        />
+      )}
     </>
-  )
+  );
 }
 
-export default ReviewCard
+export default ReviewCard;

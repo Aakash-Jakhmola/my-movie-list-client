@@ -8,7 +8,6 @@
   margin: 0 auto;
   display: flex;
   //overflow: hidden;
-  
 
   .trending-movies {
     box-sizing: border-box;
@@ -27,21 +26,21 @@
   .trending-movies::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   /* Track */
   .trending-movies::-webkit-scrollbar-track {
-    background: none; 
+    background: none;
   }
-   
+
   /* Handle */
   .trending-movies::-webkit-scrollbar-thumb {
-    background:$lightblue; 
+    background: $lightblue;
     border-radius: 20px;
   }
-  
+
   /* Handle on hover */
   .trending-movies::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
   }
 
   .feed {
@@ -52,13 +51,13 @@
     flex-grow: 1;
   }
 
-  .feed-details{
+  .feed-details {
     height: fit-content;
     position: sticky;
     top: 83px;
     box-sizing: border-box;
     width: 25%;
-    .user-card{
+    .user-card {
       box-sizing: border-box;
       background-color: $cardblue;
       padding: 0.6rem 5rem 0.6rem 1rem;
@@ -66,7 +65,7 @@
       //height: fit-content;
       display: flex;
       border-radius: 10px;
-      .user-info{
+      .user-info {
         width: 100%;
         padding-left: 1rem;
       }
@@ -79,8 +78,8 @@
       overflow: hidden;
       .option {
         box-sizing: border-box;
-        width: 100% ;
-        overflow:hidden;
+        width: 100%;
+        overflow: hidden;
         padding: 0.8rem 1rem 0.8rem 1rem;
         border-bottom: 1px solid $bgblue;
         cursor: pointer;
@@ -89,15 +88,20 @@
         }
         .link:hover {
           overflow: unset;
-          color: $btnyellow ;
+          color: $btnyellow;
           text-decoration: none;
         }
-        i{
+        i {
           margin-right: 1.5rem;
         }
       }
     }
   }
+}
 
-  
+.flex-center {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }

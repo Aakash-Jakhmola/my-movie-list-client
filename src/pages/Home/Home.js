@@ -29,7 +29,7 @@ function Home() {
         <div className='home' style={homeStyle}>
           <div className='intro'>
             <div className='intro-nav'>
-              <div className='intro-nav-logo'>MOVIEMANIA</div>
+              <div className='intro-nav-logo'>MOVIST</div>
               <div className='intro-nav-links'>
                 <Link to='/'>About</Link>
                 <Link to='/signup'>Signup</Link>

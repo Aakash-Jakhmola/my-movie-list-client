@@ -57,8 +57,8 @@ export default function SearchMovies(props) {
       <div className='search-movie-page' style={style}>
         {movies.map((movie) => (
           <MovieSearchCard
-            key={movie.id}
-            id={movie.id}
+            key={movie.movieId}
+            id={movie.movieId}
             movie={movie}
             ratingModalOpen={ratingModalOpen}
             setRatingModalOpen={setRatingModalOpen}

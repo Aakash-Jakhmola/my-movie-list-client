@@ -83,7 +83,13 @@ function Feed(props) {
         </div>
 
         <div className='feed'>
-          {feeds && feeds.length > 0 && feeds.map((f) => <FeedCard {...f} />)}
+          {feeds && feeds.length > 0 ? (
+            feeds.map((f) => <FeedCard {...f} />)
+          ) : (
+            <div className='flex-center'>
+              Follow other users to get their movies seen in your feed.
+            </div>
+          )}
         </div>
 
         <div className='feed-details'>
