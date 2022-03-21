@@ -40,7 +40,7 @@ export const logOut = () => ({ type: LOGOUT_SUCCESS });
 export const loginUser = (dispatch, credentials) => {
   dispatch(loginRequest());
   axios
-    .post(`${API_URL}/account/login`, credentials, { withCredentials: true })
+    .post(`${API_URL}/account/login`, credentials)
     .then((res) => {
       if (res.data) {
         console.log(res.data);
