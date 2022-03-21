@@ -7,31 +7,31 @@ import { API_URL } from '../../utils/Constants';
 function MovieCardContainer({ username, setLoading }) {
   const [movieList, setMovieList] = React.useState([]);
   const [offset, setOffset] = useState(0);
-  const [counter, setCounter] = useState(0);
-  const [sortBy, setSortBy] = useState('_id');
+  const [sortBy, setSortBy] = useState('time');
   const sortKey = {
-    _id: 'Time',
+    time: 'Time',
     score: 'Rating',
   };
 
-  console.log('hererererer');
-
   const toggleSort = () => {
-    if (sortBy === '_id') {
+    if (sortBy === 'time') {
       setSortBy('score');
+      setOffset(0);
     } else {
-      setSortBy('_id');
+      setSortBy('time');
+      setOffset(0);
     }
   };
 
-  const loadMovies = (clearList = false) => {
+  const loadMovies = () => {
     setLoading(true);
-    let url = `${API_URL}/movie/list?username=${username}&hasWatched=true?offset=${offset}`;
-    console.log(API_URL);
+    let clearList = offset < movieList.length;
+    console.log({ offset, clearList });
+    let url = `${API_URL}/movie/list?username=${username}&hasWatched=true&offset=${offset}&sortBy=${sortBy}`;
+
     axios
-      .get(url)
+      .get(url, { withCredentials: true })
       .then(async (res) => {
-        console.log(res.data);
         if (clearList) {
           await setMovieList([]);
           await setMovieList(res.data);
@@ -39,17 +39,11 @@ function MovieCardContainer({ username, setLoading }) {
           setMovieList([...movieList, ...res.data]);
         }
         setLoading(false);
-        console.log(movieList);
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
       });
   };
-
-  useEffect(() => {
-    loadMovies(true);
-  }, [sortBy]);
 
   useEffect(() => {
     loadMovies();

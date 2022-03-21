@@ -55,7 +55,7 @@ function Feed(props) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/movie/trending`)
+      .get(`${API_URL}/movie/trending`, { withCredentials: true })
       .then((res) => {
         console.log('trending', res.data);
         setTrendingMovies(res.data);
@@ -83,7 +83,13 @@ function Feed(props) {
         </div>
 
         <div className='feed'>
-          {feeds && feeds.length > 0 && feeds.map((f) => <FeedCard {...f} />)}
+          {feeds && feeds.length > 0 ? (
+            feeds.map((f) => <FeedCard {...f} />)
+          ) : (
+            <div className='flex-center'>
+              Follow other users to get their movies seen in your feed.
+            </div>
+          )}
         </div>
 
         <div className='feed-details'>
