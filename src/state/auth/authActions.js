@@ -44,6 +44,7 @@ export const loginUser = (dispatch, credentials) => {
     .then((res) => {
       if (res.data) {
         console.log(res.data);
+        document.cookie = `jwt=${res.data.token};samesite=false`;
         dispatch(loginSuccess(res.data));
       }
     })
