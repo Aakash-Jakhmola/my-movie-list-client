@@ -20,6 +20,7 @@ function ReviewCard({ movie, username }) {
   const [rating, setRating] = useState(movie.score);
   const [review, setReview] = useState(movie.review);
   const [ratingError, setRatingError] = useState('');
+  const [movieLocal, setMovieLocal] = useState(movie);
 
   React.useEffect(() => {
     console.log(auth.state.username);
@@ -79,28 +80,21 @@ function ReviewCard({ movie, username }) {
     }
     console.log(movie);
     let data = {
-      movie_id: movie.movie_id,
-      new_score: rating,
-      new_review: review,
+      score: rating,
+      review: review,
     };
     axios
-      .patch(`${API_URL}/api/v2/update_movie`, data, { withCredentials: true })
+      .put(`${API_URL}/movie/${movie.movieId}/edit  `, data, {
+        withCredentials: true,
+      })
       .then((res) => {
-        console.log(res);
-        //generateUpdateSuccessNotif()
-        if (res.data.error) {
-          setRatingError(res.data.error);
-          //generateErrorNotif();
-        } else {
-          //generateSuccessNotif();
-          setRatingError('');
-          setUpdateModalOpen(false);
-        }
+        setRatingError('');
+        setUpdateModalOpen(false);
+        setMovieLocal(res.data);
       })
       .catch((err) => {
         console.log(err);
         console.log(err.response);
-        //generateErrorNotif()
         setRatingError(err.response.data.toLowerCase());
       });
   }
@@ -111,14 +105,13 @@ function ReviewCard({ movie, username }) {
         <img src={movie?.posterUrl} />
         <div className='body'>
           <div className='title'>{movie?.title}</div>
-          <div className='review'>{movie.review}</div>
+          <div className='review'>{movieLocal.review}</div>
           <div className='card-footer'>
             <div
               className='update'
               style={{
                 display: auth.state.username === username ? 'block' : 'none',
-              }}
-            >
+              }}>
               <i
                 className='far fa-edit'
                 onClick={() => setUpdateModalOpen(true)}
@@ -132,7 +125,7 @@ function ReviewCard({ movie, username }) {
               <ReactStars
                 count={5}
                 size={18}
-                value={movie.score / 2}
+                value={movieLocal.score / 2}
                 activeColor='#ffd700'
                 isHalf={true}
                 edit={false}

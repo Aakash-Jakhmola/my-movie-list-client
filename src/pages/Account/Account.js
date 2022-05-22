@@ -54,7 +54,7 @@ export default function Account(props) {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${API_URL}/account?username=${username}`)
+      .get(`${API_URL}/account?username=${username}`, { withCredentials: true })
       .then((res) => {
         setUser(res.data[0]);
         console.log(res.data);

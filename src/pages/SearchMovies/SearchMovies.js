@@ -31,7 +31,7 @@ export default function SearchMovies(props) {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${API_URL}/movie?search=${query.q}`)
+      .get(`${API_URL}/movie?search=${query.q}`, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         setMovies(res.data);
