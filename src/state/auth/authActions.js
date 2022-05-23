@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_URL } from '../../utils/Constants';
+import Cookies from 'js-cookie';
 
 import {
   LOGIN_SUCCESS,
@@ -44,7 +45,11 @@ export const loginUser = (dispatch, credentials) => {
     .then((res) => {
       if (res.data) {
         console.log(res.data);
-        document.cookie = `jwt=${res.data.token};samesite=false`;
+        Cookies.set('jwt', res.data.token, {
+          path: '',
+          secure: true,
+          sameSite: false,
+        });
         dispatch(loginSuccess(res.data));
       }
     })
