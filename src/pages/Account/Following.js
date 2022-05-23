@@ -33,13 +33,7 @@ export default function Following() {
   return (
     <div style={{ margin: '4rem 15rem' }}>
       {following && following.length > 0 ? (
-        following.map((f) => (
-          <UserMiniCard
-            user_details={f}
-            is_following={true}
-            fromFollowingList={true}
-          />
-        ))
+        following.map((f) => <UserMiniCard userData={f} />)
       ) : (
         <EmptyFollowingList />
       )}

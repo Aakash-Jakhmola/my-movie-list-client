@@ -19,7 +19,9 @@ function Followers() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/account/${username}/followers`)
+      .get(`${API_URL}/account/${username}/followers`, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res.data);
         setFollowers(res.data);
@@ -32,12 +34,7 @@ function Followers() {
   return (
     <div style={{ margin: '4rem 15rem' }}>
       {followers && followers.length > 0 ? (
-        followers.map((f) => (
-          <UserMiniCard
-            user_details={f}
-            is_following={false}
-          />
-        ))
+        followers.map((f) => <UserMiniCard userData={f} />)
       ) : (
         <EmptyFollowersList />
       )}
