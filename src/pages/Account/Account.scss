@@ -6,17 +6,16 @@
   .sort-by-box {
     margin-left: 1rem;
     background-color: #20577e;
-    color: white;;
-    border:none;
+    color: white;
+    border: none;
     width: fit-content;
     border-radius: 2rem;
     padding: 0.25rem 2rem;
     text-transform: capitalize;
-    
   }
 
-  .sort-by-box:hover{
-    background-color:#326b94 !important;
+  .sort-by-box:hover {
+    background-color: #326b94 !important;
   }
 
   .movie-card-container {
@@ -24,11 +23,10 @@
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 30% 30% 30%;
-    gap:5%;
-    
+    gap: 5%;
   }
   .profile-wrapper {
-    justify-content: space-evenly;    
+    justify-content: space-evenly;
   }
   .stats {
     display: flex;
@@ -37,10 +35,13 @@
     justify-content: space-evenly;
   }
 
-  hr { 
-    display: block; height: 1px;
-    border: 0; border-top: 1px solid $btnyellow;
-    margin: 1em 0; padding: 0; 
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $btnyellow;
+    margin: 1em 0;
+    padding: 0;
   }
 
   a {
@@ -48,7 +49,7 @@
     color: inherit;
   }
 
-  .info{
+  .info {
     cursor: pointer;
     display: flex;
     padding: 0 10%;
@@ -74,17 +75,20 @@
       background: none;
       color: white;
     }
-
-  }   
+  }
 
   .info:hover {
     border-bottom: 2px solid $btnyellowhover;
     //color: rgb(252, 225, 199);
   }
 
-  .info-text span{
+  .info-text {
+    display: flex;
+    align-items: center;
+  }
+
+  .info-text span {
     font-size: x-large;
-    margin: 0;
     font-weight: 600;
   }
   .info-text span:nth-child(2) {
@@ -98,9 +102,9 @@
 }
 
 @media screen and (max-width: 1450px) {
- .account{
-   padding:2rem 6rem;
- }
+  .account {
+    padding: 2rem 6rem;
+  }
 }
 
 @media screen and (max-width: 1278px) {
@@ -117,10 +121,8 @@
   }
 }
 
-
 @media screen and (max-width: 770px) {
-  .account{
-    padding:2rem 2rem;
+  .account {
+    padding: 2rem 2rem;
   }
-  
- }
+}

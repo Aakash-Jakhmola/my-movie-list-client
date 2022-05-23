@@ -122,7 +122,7 @@ export default function Account(props) {
                 ></i>
               </div>
               <div className='info-text'>
-                <span>{user.watchedMoviesCount}</span>
+                {/* <span>{user.watchedMoviesCount}</span> */}
                 <span>Movies</span>
               </div>
             </Col>
@@ -147,7 +147,7 @@ export default function Account(props) {
                 ></i>
               </div>
               <div className='info-text'>
-                <span>{user.watchLaterMoviesCount}</span>
+                {/* <span>{user.watchLaterMoviesCount}</span> */}
                 <span>Watchlist</span>
               </div>
             </Col>
@@ -170,7 +170,7 @@ export default function Account(props) {
                 ></i>
               </div>
               <div className='info-text'>
-                <span>{user.followersCount}</span>
+                {/* <span>{user.followersCount}</span> */}
                 <span>Followers</span>
               </div>
             </Col>
@@ -193,7 +193,7 @@ export default function Account(props) {
                 ></i>
               </div>
               <div className='info-text'>
-                <span>{user.followingCount}</span>
+                {/* <span>{user.followingCount}</span> */}
                 <span> Following</span>
               </div>
             </Col>
