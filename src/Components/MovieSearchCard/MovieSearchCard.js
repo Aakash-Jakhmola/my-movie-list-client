@@ -24,6 +24,10 @@ export default function MovieSearchCard({
   const [ratingError, setRatingError] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
+  useEffect(()=>{
+    console.log(movie)
+  },[])
+
   const generateSuccessNotif = () => {
     store.addNotification({
       title: 'Success',
@@ -73,10 +77,13 @@ export default function MovieSearchCard({
   };
 
   function addToWatchedMovies() {
+    if(movie.inViewerList && movie.hasWatched) return;
     setModalOpen(true);
   }
 
   function watchLaterMovie() {
+    if(movie.inViewerList) return;
+
     let data = { movieId: movie.movieId, hasWatched: false };
     //console.log(movie)
     axios
@@ -165,11 +172,11 @@ export default function MovieSearchCard({
             style={{ display: fromAccount ? 'none' : 'flex' }}
           >
             <div onClick={addToWatchedMovies}>
-              <i className='fas fa-check-circle fa-2x' />
+              <i className='fas fa-check-circle fa-2x' style={{filter:movie.inViewerList && movie.hasWatched?'grayscale(1)':''}}/>
               <span> </span>
             </div>
             <div onClick={watchLaterMovie}>
-              <i className='fas fa-clock fa-2x' />
+              <i className='fas fa-clock fa-2x' style={{filter:movie.inViewerList?'grayscale(1)':''}}/>
               <span></span>
             </div>
           </div>

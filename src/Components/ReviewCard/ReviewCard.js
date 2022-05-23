@@ -102,7 +102,7 @@ function ReviewCard({ movie, username }) {
     <>
       <ReactNotification />
       <div className='movie-review-card'>
-        <img src={movie?.posterUrl} />
+        <img src={movie?.posterUrl} alt='Poster'/>
         <div className='body'>
           <div className='title'>{movie?.title}</div>
           <div className='review'>{movieLocal.review}</div>
