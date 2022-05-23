@@ -20,7 +20,9 @@ export default function Following() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/account/${username}/following`)
+      .get(`${API_URL}/account/${username}/following`, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res.data);
         setFollowing(res.data);
